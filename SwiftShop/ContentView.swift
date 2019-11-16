@@ -22,7 +22,7 @@ struct ContentView: View {
                 }
                 .tag(0)
             
-                ProductsPage()
+            ConnectedProductsPage()
                 .tabItem {
                     VStack {
                         Image("second")
@@ -30,7 +30,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(1)
-            
+
                 TagsPage()
                 .tabItem {
                     VStack {

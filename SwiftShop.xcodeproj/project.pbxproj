@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,13 @@
 		E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9123807D3A0014DEDB /* ProductsPage.swift */; };
 		E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9323807D680014DEDB /* TagsPage.swift */; };
 		E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9523807D830014DEDB /* SettingsPage.swift */; };
+		E78835BB238092020039CFD0 /* SwiftDux in Frameworks */ = {isa = PBXBuildFile; productRef = E78835BA238092020039CFD0 /* SwiftDux */; };
+		E78835BD238092AF0039CFD0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835BC238092AF0039CFD0 /* AppState.swift */; };
+		E78835C0238093B30039CFD0 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835BF238093B30039CFD0 /* AppReducer.swift */; };
+		E78835C3238094140039CFD0 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C2238094140039CFD0 /* Products.swift */; };
+		E78835C5238094750039CFD0 /* ProductsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C4238094750039CFD0 /* ProductsAction.swift */; };
+		E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C6238094D60039CFD0 /* ProductsReducer.swift */; };
+		E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C82380B53A0039CFD0 /* AddProductForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,12 @@
 		E74C6E9123807D3A0014DEDB /* ProductsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPage.swift; sourceTree = "<group>"; };
 		E74C6E9323807D680014DEDB /* TagsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPage.swift; sourceTree = "<group>"; };
 		E74C6E9523807D830014DEDB /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		E78835BC238092AF0039CFD0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E78835BF238093B30039CFD0 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		E78835C2238094140039CFD0 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		E78835C4238094750039CFD0 /* ProductsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsAction.swift; sourceTree = "<group>"; };
+		E78835C6238094D60039CFD0 /* ProductsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsReducer.swift; sourceTree = "<group>"; };
+		E78835C82380B53A0039CFD0 /* AddProductForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E78835BB238092020039CFD0 /* SwiftDux in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +171,8 @@
 		E74C6E8C23807AFA0014DEDB /* State */ = {
 			isa = PBXGroup;
 			children = (
+				E78835C1238093F20039CFD0 /* Products */,
+				E78835BE238093A10039CFD0 /* App */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -164,12 +180,48 @@
 		E74C6E8D23807B250014DEDB /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				E769619E2380BF3400D75545 /* ProductsPage */,
 				E74C6E8E23807CD50014DEDB /* ListPage.swift */,
-				E74C6E9123807D3A0014DEDB /* ProductsPage.swift */,
 				E74C6E9323807D680014DEDB /* TagsPage.swift */,
 				E74C6E9523807D830014DEDB /* SettingsPage.swift */,
 			);
 			path = Containers;
+			sourceTree = "<group>";
+		};
+		E769619E2380BF3400D75545 /* ProductsPage */ = {
+			isa = PBXGroup;
+			children = (
+				E769619F2380BF4100D75545 /* Views */,
+				E74C6E9123807D3A0014DEDB /* ProductsPage.swift */,
+			);
+			path = ProductsPage;
+			sourceTree = "<group>";
+		};
+		E769619F2380BF4100D75545 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E78835C82380B53A0039CFD0 /* AddProductForm.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E78835BE238093A10039CFD0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E78835BC238092AF0039CFD0 /* AppState.swift */,
+				E78835BF238093B30039CFD0 /* AppReducer.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E78835C1238093F20039CFD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E78835C2238094140039CFD0 /* Products.swift */,
+				E78835C4238094750039CFD0 /* ProductsAction.swift */,
+				E78835C6238094D60039CFD0 /* ProductsReducer.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +240,9 @@
 			dependencies = (
 			);
 			name = SwiftShop;
+			packageProductDependencies = (
+				E78835BA238092020039CFD0 /* SwiftDux */,
+			);
 			productName = SwiftShop;
 			productReference = E72F0328238078AB00FAADE7 /* SwiftShop.app */;
 			productType = "com.apple.product-type.application";
@@ -260,6 +315,9 @@
 				Base,
 			);
 			mainGroup = E72F031F238078AB00FAADE7;
+			packageReferences = (
+				E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */,
+			);
 			productRefGroup = E72F0329238078AB00FAADE7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -305,9 +363,15 @@
 			files = (
 				E72F032C238078AB00FAADE7 /* AppDelegate.swift in Sources */,
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
+				E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */,
 				E74C6E8F23807CD50014DEDB /* ListPage.swift in Sources */,
+				E78835C0238093B30039CFD0 /* AppReducer.swift in Sources */,
+				E78835BD238092AF0039CFD0 /* AppState.swift in Sources */,
+				E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */,
 				E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */,
+				E78835C5238094750039CFD0 /* ProductsAction.swift in Sources */,
 				E72F0330238078AB00FAADE7 /* ContentView.swift in Sources */,
+				E78835C3238094140039CFD0 /* Products.swift in Sources */,
 				E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */,
 				E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */,
 			);
@@ -628,6 +692,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/StevenLambion/SwiftDux";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E78835BA238092020039CFD0 /* SwiftDux */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */;
+			productName = SwiftDux;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E72F0320238078AB00FAADE7 /* Project object */;
 }
