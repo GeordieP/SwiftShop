@@ -15,6 +15,10 @@
 		E72F0338238078AB00FAADE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72F0336238078AB00FAADE7 /* LaunchScreen.storyboard */; };
 		E72F0343238078AB00FAADE7 /* SwiftShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72F0342238078AB00FAADE7 /* SwiftShopTests.swift */; };
 		E72F034E238078AB00FAADE7 /* SwiftShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */; };
+		E74C6E8F23807CD50014DEDB /* ListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E8E23807CD50014DEDB /* ListPage.swift */; };
+		E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9123807D3A0014DEDB /* ProductsPage.swift */; };
+		E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9323807D680014DEDB /* TagsPage.swift */; };
+		E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9523807D830014DEDB /* SettingsPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		E72F0349238078AB00FAADE7 /* SwiftShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftShopUITests.swift; sourceTree = "<group>"; };
 		E72F034F238078AC00FAADE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E74C6E8E23807CD50014DEDB /* ListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPage.swift; sourceTree = "<group>"; };
+		E74C6E9123807D3A0014DEDB /* ProductsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPage.swift; sourceTree = "<group>"; };
+		E74C6E9323807D680014DEDB /* TagsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPage.swift; sourceTree = "<group>"; };
+		E74C6E9523807D830014DEDB /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,9 @@
 		E72F032A238078AB00FAADE7 /* SwiftShop */ = {
 			isa = PBXGroup;
 			children = (
+				E74C6E8D23807B250014DEDB /* Containers */,
+				E74C6E8C23807AFA0014DEDB /* State */,
+				E74C6E8B23807AE30014DEDB /* Views */,
 				E72F032B238078AB00FAADE7 /* AppDelegate.swift */,
 				E72F032D238078AB00FAADE7 /* SceneDelegate.swift */,
 				E72F032F238078AB00FAADE7 /* ContentView.swift */,
@@ -134,6 +145,31 @@
 				E72F034F238078AC00FAADE7 /* Info.plist */,
 			);
 			path = SwiftShopUITests;
+			sourceTree = "<group>";
+		};
+		E74C6E8B23807AE30014DEDB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E74C6E8C23807AFA0014DEDB /* State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		E74C6E8D23807B250014DEDB /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				E74C6E8E23807CD50014DEDB /* ListPage.swift */,
+				E74C6E9123807D3A0014DEDB /* ProductsPage.swift */,
+				E74C6E9323807D680014DEDB /* TagsPage.swift */,
+				E74C6E9523807D830014DEDB /* SettingsPage.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +305,11 @@
 			files = (
 				E72F032C238078AB00FAADE7 /* AppDelegate.swift in Sources */,
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
+				E74C6E8F23807CD50014DEDB /* ListPage.swift in Sources */,
+				E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */,
 				E72F0330238078AB00FAADE7 /* ContentView.swift in Sources */,
+				E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */,
+				E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
