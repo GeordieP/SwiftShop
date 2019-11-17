@@ -22,12 +22,13 @@ final class ProductsReducer: Reducer {
             state.remove(at: at)
 
         case .SetProduct(let at, let product):
-            state[at] = product
+            state.remove(at: at)
+            state.insert(product, at: at)
+
         case .MoveProduct(let from, let to):
             state.move(from: from, to: to)
         }
         
-
         return state
     }
 }
