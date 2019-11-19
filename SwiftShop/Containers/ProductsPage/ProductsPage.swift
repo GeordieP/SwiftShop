@@ -12,7 +12,12 @@ import SwiftDux
 struct ProductsPage: View {
     @MappedState private var props: Props
     @MappedDispatch() private var dispatch
-    
+    @ObservedObject private var filterer = Filterer<Product>()
+
+    init() {
+        filterer.addFilter(name: "SEARCH", filterFn: { product in product.name.contains("ir") } )
+    }
+
     func createProduct(name: String, price: Float) {
         self.dispatch(ProductsAction.AddProduct(name: name, price: price))
     }
@@ -20,18 +25,19 @@ struct ProductsPage: View {
 //    func moveProduct(from: IndexSet, to: Int) {
 //        self.dispatch(ProductsAction.MoveProduct(from: from, to: to))
 //    }
-    
+
     func deleteProduct(in offset: IndexSet) {
         self.dispatch(ProductsAction.RemoveProduct(at: offset))
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        let filteredProducts = filterer.applyFilters(props.products.values)
+        return VStack(alignment: .leading) {
             AddProductForm(onSubmit: createProduct)
                 .frame(height: 220.0)
 
             List {
-                ForEach(props.products) { product in
+                ForEach(filteredProducts) { product in
                     HStack {
                         Text(product.name)
                         Spacer()

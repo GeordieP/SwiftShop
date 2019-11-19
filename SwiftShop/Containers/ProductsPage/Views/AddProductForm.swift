@@ -11,22 +11,20 @@ import SwiftUI
 let DEFAULT_PRICE = "0.00"
 
 struct AddProductForm: View {
-    var onSubmit: (String, Float) -> ()
+    var onSubmit: (String, Float) -> () // this is passed in from whatever renders us
+    
     @State private var name = ""
     @State private var price = DEFAULT_PRICE
     
     var body: some View {
         Form {
-            Text("New Product")
-                .font(.headline)
+            Text("New Product").font(.headline)
             
             TextField("Name", text: $name)
             TextField("Price", text: $price)
+            
             Button(action: handleSubmit) {
-                HStack{
-                    Spacer()
-                    Text("Submit")
-                }
+                Text("Submit")
             }
         }
     }
