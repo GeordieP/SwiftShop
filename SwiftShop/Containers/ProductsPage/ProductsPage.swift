@@ -12,7 +12,7 @@ import SwiftDux
 struct ProductsPage: View {
     @MappedState private var props: Props
     @MappedDispatch() private var dispatch
-    @ObservedObject private var filterer = Filterer<Product>()
+    @ObservedObject private var filters = FilterManager<Product>()
     
     func createProduct(name: String, price: Float) {
         self.dispatch(ProductsAction.AddProduct(name: name, price: price))
@@ -25,12 +25,12 @@ struct ProductsPage: View {
     var body: some View {
         VStack() {
             AddProductForm(onSubmit: createProduct)
-                .frame(height: CGFloat(220.0))
+                .frame(height: 220.0)
             
-            ProductFilterBar(filterer: filterer)
-            
+            ProductFilterBar(filterManager: filters)
+
             List {
-                ForEach(filterer.applyFilters(props.products.values)) { product in
+                ForEach(filters.apply(to: props.products.values)) { product in
                     HStack {
                         Text(product.name)
                         Spacer()

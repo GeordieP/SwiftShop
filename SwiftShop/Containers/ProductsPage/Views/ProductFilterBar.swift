@@ -1,5 +1,5 @@
 //
-//  FilterBar.swift
+//  ProductFilterBar.swift
 //  SwiftShop
 //
 //  Created by Geordie Powers on 2019-11-18.
@@ -9,30 +9,33 @@
 import SwiftUI
 
 struct ProductFilterBar: View {
-    var filterer: Filterer<Product>
-    
+    var filterManager: FilterManager<Product>
+
     var body: some View {
-        VStack {
+        HStack {
             Button(action: addSearchFilter) {
                 Text("Add ir filter")
             }
+            
+            Spacer()
+            
             Button(action: removeSearchFilter) {
                 Text("Remove ir filter")
             }
-        }
+        }.padding()
     }
     
     func addSearchFilter() {
-        filterer.addFilter("SEARCH", { $0.name.contains("ir") })
+        filterManager.upsert("SEARCH", { $0.name.contains("ir") })
     }
     
     func removeSearchFilter() {
-        filterer.removeFilter("SEARCH")
+        filterManager.remove("SEARCH")
     }
 }
 
-//struct FilterBar_Previews: PreviewProvider {
+//struct ProductFilterBar_Previews: PreviewProvider {
 //    static var previews: some View {
-//        FilterBar()
+//        ProductFilterBar()
 //    }
 //}
