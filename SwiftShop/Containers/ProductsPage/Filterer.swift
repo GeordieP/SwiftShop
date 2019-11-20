@@ -16,12 +16,12 @@ class Filterer<T> : ObservableObject {
         filters = [String: FilterFn]()
     }
     
-    func addFilter(name: String, filterFn: @escaping FilterFn) {
+    func addFilter(_ name: String, _ filterFn: @escaping FilterFn) {
         filters.updateValue(filterFn, forKey: name)
     }
     
-    func removeFilter(forKey: String) {
-        filters.removeValue(forKey: forKey)
+    func removeFilter(_ name: String) {
+        filters.removeValue(forKey: name)
     }
     
     func applyFilters(_ collection: [T]) -> [T] {

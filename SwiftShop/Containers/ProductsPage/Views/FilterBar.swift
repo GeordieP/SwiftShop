@@ -8,14 +8,31 @@
 
 import SwiftUI
 
-struct FilterBar: View {
+struct ProductFilterBar: View {
+    var filterer: Filterer<Product>
+    
     var body: some View {
-        TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+        VStack {
+            Button(action: addSearchFilter) {
+                Text("Add ir filter")
+            }
+            Button(action: removeSearchFilter) {
+                Text("Remove ir filter")
+            }
+        }
+    }
+    
+    func addSearchFilter() {
+        filterer.addFilter("SEARCH", { $0.name.contains("ir") })
+    }
+    
+    func removeSearchFilter() {
+        filterer.removeFilter("SEARCH")
     }
 }
 
-struct FilterBar_Previews: PreviewProvider {
-    static var previews: some View {
-        FilterBar()
-    }
-}
+//struct FilterBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FilterBar()
+//    }
+//}

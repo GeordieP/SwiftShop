@@ -13,31 +13,24 @@ struct ProductsPage: View {
     @MappedState private var props: Props
     @MappedDispatch() private var dispatch
     @ObservedObject private var filterer = Filterer<Product>()
-
-    init() {
-        filterer.addFilter(name: "SEARCH", filterFn: { product in product.name.contains("ir") } )
-    }
-
+    
     func createProduct(name: String, price: Float) {
         self.dispatch(ProductsAction.AddProduct(name: name, price: price))
     }
     
-//    func moveProduct(from: IndexSet, to: Int) {
-//        self.dispatch(ProductsAction.MoveProduct(from: from, to: to))
-//    }
-
     func deleteProduct(in offset: IndexSet) {
         self.dispatch(ProductsAction.RemoveProduct(at: offset))
     }
-
+    
     var body: some View {
-        let filteredProducts = filterer.applyFilters(props.products.values)
-        return VStack(alignment: .leading) {
+        VStack() {
             AddProductForm(onSubmit: createProduct)
-                .frame(height: 220.0)
-
+                .frame(height: CGFloat(220.0))
+            
+            ProductFilterBar(filterer: filterer)
+            
             List {
-                ForEach(filteredProducts) { product in
+                ForEach(filterer.applyFilters(props.products.values)) { product in
                     HStack {
                         Text(product.name)
                         Spacer()
@@ -45,7 +38,6 @@ struct ProductsPage: View {
                     }
                 }
                 .onDelete(perform: deleteProduct)
-                // .onMove(perform: moveProduct)
             }
         }
     }
