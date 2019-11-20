@@ -10,25 +10,25 @@ import Foundation
 import SwiftDux
 
 final class ProductsReducer: Reducer {
-    func reduce(state: OrderedState<Product>, action: ProductsAction) -> OrderedState<Product> {
-        var state = state
-        
-        switch action {
-        case .AddProduct(let name, let price):
-            let id = UUID().uuidString
-            state.append(Product(id: id, name: name, price: price))
-            
-        case .RemoveProduct(let at):
-            state.remove(at: at)
-
-        case .SetProduct(let at, let product):
-            state.remove(at: at)
-            state.insert(product, at: at)
-
-        case .MoveProduct(let from, let to):
-            state.move(from: from, to: to)
-        }
-        
-        return state
+  func reduce(state: OrderedState<Product>, action: ProductsAction) -> OrderedState<Product> {
+    var state = state
+    
+    switch action {
+    case .AddProduct(let name, let price):
+      let id = UUID().uuidString
+      state.append(Product(id: id, name: name, price: price))
+      
+    case .RemoveProduct(let at):
+      state.remove(at: at)
+      
+    case .SetProduct(let at, let product):
+      state.remove(at: at)
+      state.insert(product, at: at)
+      
+    case .MoveProduct(let from, let to):
+      state.move(from: from, to: to)
     }
+    
+    return state
+  }
 }

@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct SettingsPage: View {
-    var body: some View {
-        VStack {
-            Text("Settings page")
-        }
+  var body: some View {
+    VStack {
+      Text("Settings page")
     }
+  }
 }
 
 struct SettingsPage_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsPage()
-    }
+  static var previews: some View {
+    SettingsPage()
+  }
 }

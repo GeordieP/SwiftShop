@@ -10,10 +10,10 @@ import Foundation
 import SwiftDux
 
 enum ProductsAction: Action {
-    case AddProduct(name: String, price: Float /* tagIds */)
-    case RemoveProduct(at: IndexSet)
-    case SetProduct(at: Int, product: Product)
-    case MoveProduct(from: IndexSet, to: Int)
+  case AddProduct(name: String, price: Float /* tagIds */)
+  case RemoveProduct(at: IndexSet)
+  case SetProduct(at: Int, product: Product)
+  case MoveProduct(from: IndexSet, to: Int)
 }
 
 //extension ProductsAction {

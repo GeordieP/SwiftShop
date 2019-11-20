@@ -9,15 +9,15 @@
 import SwiftUI
 
 struct TagsPage: View {
-    var body: some View {
-        VStack {
-            Text("Tags page")
-        }
+  var body: some View {
+    VStack {
+      Text("Tags page")
     }
+  }
 }
 
 struct TagsPage_Previews: PreviewProvider {
-    static var previews: some View {
-        TagsPage()
-    }
+  static var previews: some View {
+    TagsPage()
+  }
 }

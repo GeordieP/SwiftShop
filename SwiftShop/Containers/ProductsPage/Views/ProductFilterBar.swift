@@ -9,29 +9,29 @@
 import SwiftUI
 
 struct ProductFilterBar: View {
-    var filterManager: FilterManager<Product>
-
-    var body: some View {
-        HStack {
-            Button(action: addSearchFilter) {
-                Text("Add ir filter")
-            }
-            
-            Spacer()
-            
-            Button(action: removeSearchFilter) {
-                Text("Remove ir filter")
-            }
-        }.padding()
-    }
-    
-    func addSearchFilter() {
-        filterManager.upsert("SEARCH", { $0.name.contains("ir") })
-    }
-    
-    func removeSearchFilter() {
-        filterManager.remove("SEARCH")
-    }
+  var filterManager: FilterManager<Product>
+  
+  var body: some View {
+    HStack {
+      Button(action: addSearchFilter) {
+        Text("Add ir filter")
+      }
+      
+      Spacer()
+      
+      Button(action: removeSearchFilter) {
+        Text("Remove ir filter")
+      }
+    }.padding()
+  }
+  
+  func addSearchFilter() {
+    filterManager.upsert("SEARCH", { $0.name.contains("ir") })
+  }
+  
+  func removeSearchFilter() {
+    filterManager.remove("SEARCH")
+  }
 }
 
 //struct ProductFilterBar_Previews: PreviewProvider {

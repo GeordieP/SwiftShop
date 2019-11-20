@@ -10,9 +10,9 @@ import Foundation
 import SwiftDux
 
 final class AppReducer : Reducer {
-    let productsReducer = ProductsReducer()
-    
-    func reduceNext(state: AppState, action: Action) -> AppState {
-        return AppState(products: productsReducer.reduceAny(state: state.products, action: action))
-    }
+  let productsReducer = ProductsReducer()
+  
+  func reduceNext(state: AppState, action: Action) -> AppState {
+    return AppState(products: productsReducer.reduceAny(state: state.products, action: action))
+  }
 }

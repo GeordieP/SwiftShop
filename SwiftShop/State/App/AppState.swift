@@ -10,12 +10,12 @@ import Foundation
 import SwiftDux
 
 let DEFAULT_PRODUCTS = OrderedState(
-    Product(id: "1", name: "First", price: 3.00),
-    Product(id: "2", name: "Second", price: 2.00),
-    Product(id: "3", name: "Third", price: 1.00),
-    Product(id: "4", name: "Fourth", price: 0.00)
+  Product(id: "1", name: "First", price: 3.00),
+  Product(id: "2", name: "Second", price: 2.00),
+  Product(id: "3", name: "Third", price: 1.00),
+  Product(id: "4", name: "Fourth", price: 0.00)
 )
 
 struct AppState : StateType {
-    var products: OrderedState<Product> = DEFAULT_PRODUCTS
+  var products: OrderedState<Product> = DEFAULT_PRODUCTS
 }
