@@ -18,13 +18,12 @@ final class ProductsReducer: Reducer {
       let id = UUID().uuidString
       state.append(Product(id: id, name: name, price: price))
       
-    case .RemoveProduct(let at):
-      state.remove(at: at)
-      
-    case .SetProduct(let at, let product):
-      state.remove(at: at)
-      state.insert(product, at: at)
-      
+    case .RemoveProduct(let id):
+      state.remove(forId: id)
+
+    case .SetProduct(let id, let product):
+      state[id] = product
+
     case .MoveProduct(let from, let to):
       state.move(from: from, to: to)
     }
