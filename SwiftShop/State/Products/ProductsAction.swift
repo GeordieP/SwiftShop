@@ -11,8 +11,8 @@ import SwiftDux
 
 enum ProductsAction: Action {
   case AddProduct(name: String, price: Float /* tagIds */)
-  case RemoveProduct(at: IndexSet)
-  case SetProduct(at: Int, product: Product)
+  case RemoveProduct(id: String)
+  case SetProduct(id: String, product: Product)
   case MoveProduct(from: IndexSet, to: Int)
 }
 
