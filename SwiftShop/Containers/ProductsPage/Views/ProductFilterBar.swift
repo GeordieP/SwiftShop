@@ -10,32 +10,28 @@ import SwiftUI
 
 struct ProductFilterBar: View {
   var filterManager: FilterManager<Product>
+  @State private var searchValue: String = "";
   
+  private func setSearch(_ fieldValue: String) {
+    defer { self.searchValue = fieldValue }
+    
+    if fieldValue.count == 0 {
+      self.filterManager.remove("SEARCH")
+      return
+    }
+    
+    self.filterManager.upsert("SEARCH", { product in
+      product.name
+        .lowercased()
+        .contains(fieldValue.lowercased())
+    })
+  }
+
   var body: some View {
-    HStack {
-      Button(action: addSearchFilter) {
-        Text("Add ir filter")
-      }
-      
-      Spacer()
-      
-      Button(action: removeSearchFilter) {
-        Text("Remove ir filter")
-      }
+    let boundSearchValue = Binding<String>(get: { self.searchValue }, set: self.setSearch)
+    
+    return HStack {
+      TextField("Search for a product name", text: boundSearchValue)
     }.padding()
   }
-  
-  func addSearchFilter() {
-    filterManager.upsert("SEARCH", { $0.name.contains("ir") })
-  }
-  
-  func removeSearchFilter() {
-    filterManager.remove("SEARCH")
-  }
 }
-
-//struct ProductFilterBar_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProductFilterBar()
-//    }
-//}
