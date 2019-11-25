@@ -24,3 +24,9 @@ A quick & easy shopping list experience for iOS.
 
 - Xcode 11 or higher
 - iOS 13 or higher (if installing the app on a device)
+
+**Dev Logs**
+
+I've been writing weekly posts about my experiences using SwiftUI for the first time on my website. Feel free to check them out:
+
+- [Week 1 - Starting out, Filtering Lists](http://gpow.ca/blog/posts/SwiftShop1/)
