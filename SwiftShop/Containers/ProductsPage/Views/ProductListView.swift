@@ -1,5 +1,5 @@
 //
-//  ProductList.swift
+//  ProductListView.swift
 //  SwiftShop
 //
 //  Created by Geordie Powers on 2019-11-24.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ProductList: View {
+struct ProductListView: View {
   var products: [Product]
   var deleteProduct: (String) -> Void
   
@@ -17,7 +17,7 @@ struct ProductList: View {
     if index > products.count { return }
     deleteProduct(products[index].id)
   }
-  
+
   var body: some View {
     List {
       ForEach(products) { p in

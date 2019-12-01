@@ -18,7 +18,7 @@ class ProductStateTests: XCTestCase {
   func testAddProduct() {
     let result = reducer.reduce(
       state: emptyState(),
-      action: .AddProduct(name: "First Product", price: 4.00)
+      action: .CreateProduct(name: "First Product", price: 4.00)
     )
     
     XCTAssertEqual(result.count, 1)
@@ -29,7 +29,7 @@ class ProductStateTests: XCTestCase {
   func testRemoveProduct() {
     let result = reducer.reduce(
       state: fourState(),
-      action: .RemoveProduct(id: "0")
+      action: .DeleteProduct(id: "0")
     )
     
     XCTAssertEqual(result.count, 3)
@@ -39,7 +39,7 @@ class ProductStateTests: XCTestCase {
   func testSetProduct() {
     let result = reducer.reduce(
       state: fourState(),
-      action: .SetProduct(id: "2", product: Product(id: "x", name: "Inserted", price: 10))
+      action: .UpdateProduct(updatedProduct: Product(id: "2", name: "Inserted", price: 10))
     )
     
     XCTAssertEqual(result.count, 4)

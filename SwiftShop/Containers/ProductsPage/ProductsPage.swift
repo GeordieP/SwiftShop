@@ -15,18 +15,18 @@ struct ProductsPage: View {
   @ObservedObject private var filters = FilterManager<Product>()
 
   func createProduct(name: String, price: Float) {
-    self.dispatch(ProductsAction.AddProduct(name: name, price: price))
+    self.dispatch(AppAction.CreateProduct(name: name, price: price))
   }
   
   func deleteProduct(id: String) {
-    self.dispatch(ProductsAction.RemoveProduct(id: id))
+    self.dispatch(AppAction.DeleteProduct(id: id))
   }
   
   var body: some View {
     VStack() {
       AddProductForm(onSubmit: createProduct).frame(height: 220.0)
       ProductFilterBar(filterManager: filters)
-      ProductList(products: filters.apply(to: props.products.values), deleteProduct: deleteProduct)
+      ProductListView(products: filters.apply(to: props.products.values), deleteProduct: deleteProduct)
     }
   }
 }

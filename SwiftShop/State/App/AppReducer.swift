@@ -11,8 +11,12 @@ import SwiftDux
 
 final class AppReducer : Reducer {
   let productsReducer = ProductsReducer()
+  let listsReducer = ListsReducer()
   
-  func reduceNext(state: AppState, action: Action) -> AppState {
-    return AppState(products: productsReducer.reduceAny(state: state.products, action: action))
+  func reduce(state: AppState, action: AppAction) -> AppState {
+    return AppState(
+      products: productsReducer.reduce(state: state.products, action: action),
+      lists: listsReducer.reduce(state: state.lists, action: action)
+    )
   }
 }

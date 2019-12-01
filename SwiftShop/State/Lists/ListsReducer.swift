@@ -10,24 +10,51 @@ import Foundation
 import SwiftDux
 
 final class ListsReducer: Reducer {
-  func reduce(state: OrderedState<List>, action: ListsAction) -> OrderedState<List> {
+  typealias State = OrderedState<ProductsList>
+  
+  func reduce(state: State, action: AppAction) -> State {
     var state = state
     
     switch action {
-    case .AddList(let name):
+    case .CreateList(let name):
       let id = UUID().uuidString
-      state.append(List(id: id, name: name))
-
-    case .RemoveList(let id):
+      state.append(ProductsList(id: id, name: name))
+      
+    // TODO: should this action be "RenameList" instead, and only deal with the name?
+    case .UpdateList(let updatedList):
+      // TODO: check if list ID exists
+      // TODO: don't overwrite products
+      state[updatedList.id] = updatedList
+      
+    case .DeleteList(let id):
       state.remove(forId: id)
       
-    case .SetList(let id, let list):
-      state[id] = list
+    case .AddProductToList(let productId, let listId):
+      guard var list = state[listId] else { break }
+      list.products.append(ProductStatus(id: productId))
+      state[listId] = list
+
+    case .RemoveProductFromList(let productId, let listId):
+      guard var list = state[listId] else { break }
+      list.products.remove(forId: productId)
+      state[listId] = list
       
-    case .MoveList(let from, let to):
-      state.move(from: from, to: to)
+    case .CompleteProduct(let listId, let productId):
+      guard let list = state[listId] else { break }
+      guard var product = list.products[productId] else { break }
+      product.complete = true
+      state[listId]!.products[productId] = product
+
+    case .UncompleteProduct(let listId, let productId):
+      guard let list = state[listId] else { break }
+      guard var product = list.products[productId] else { break }
+      product.complete = false
+      state[listId]!.products[productId] = product
+
+    default:
+      break
     }
-    
+
     return state
   }
 }
