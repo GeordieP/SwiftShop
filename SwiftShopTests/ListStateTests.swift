@@ -12,6 +12,8 @@ import XCTest
 import SwiftDux
 @testable import SwiftShop
 
+let DEFAULT_TEST_LIST_ID = "MAIN"
+
 class ListStateTests: XCTestCase {
   let reducer: ListsReducer = ListsReducer()
   
@@ -28,14 +30,14 @@ class ListStateTests: XCTestCase {
   func testDeleteList() {
     let result = reducer.reduce(
       state: defaultListState(),
-      action: .DeleteList(id: "MAIN")
+      action: .DeleteList(id: DEFAULT_TEST_LIST_ID)
     )
     
     XCTAssertEqual(result.count, 0)
   }
   
   func testUpdateList() {
-    let newList = ProductsList(id: "MAIN", name: "Updated List Name")
+    let newList = ProductsList(id: DEFAULT_TEST_LIST_ID, name: "Updated List Name")
     
     
     let result = reducer.reduce(
@@ -44,49 +46,49 @@ class ListStateTests: XCTestCase {
     )
     
     XCTAssertEqual(result.count, 1)
-    XCTAssertEqual(result.first!.id, "MAIN")
+    XCTAssertEqual(result.first!.id, DEFAULT_TEST_LIST_ID)
     XCTAssertEqual(result.first!.name, "Updated List Name")
   }
   
   
   func testAddRemoveProduct() {
     let initialState = defaultListState()
-    XCTAssertEqual(initialState["MAIN"]!.products.count, 0)
+    XCTAssertEqual(initialState[DEFAULT_TEST_LIST_ID]!.products.count, 0)
 
     let result1 = reducer.reduce(
       state: initialState,
-      action: .AddProductToList(productId: "TestProduct", listId: "MAIN")
+      action: .AddProductToList(productId: "TestProduct", listId: DEFAULT_TEST_LIST_ID)
     )
     
-    XCTAssertEqual(result1["MAIN"]!.products.count, 1)
+    XCTAssertEqual(result1[DEFAULT_TEST_LIST_ID]!.products.count, 1)
     
     let result2 = reducer.reduce(
       state: result1,
-      action: .RemoveProductFromList(productId: "TestProduct", listId: "MAIN")
+      action: .RemoveProductFromList(productId: "TestProduct", listId: DEFAULT_TEST_LIST_ID)
     )
     
-    XCTAssertEqual(result2["MAIN"]!.products.count, 0)
+    XCTAssertEqual(result2[DEFAULT_TEST_LIST_ID]!.products.count, 0)
   }
   
   func testProductStatus() {
     let initialState = defaultStateWithProduct()
-    let productId = initialState["MAIN"]!.products.first!.id
+    let productId = initialState[DEFAULT_TEST_LIST_ID]!.products.first!.id
     
-    XCTAssertEqual(initialState["MAIN"]!.products.first!.complete, false)
+    XCTAssertEqual(initialState[DEFAULT_TEST_LIST_ID]!.products.first!.complete, false)
     
     let result1 = reducer.reduce(
       state: initialState,
-      action: .CompleteProduct(listId: "MAIN", productId: productId)
+      action: .CompleteProduct(listId: DEFAULT_TEST_LIST_ID, productId: productId)
     )
     
-    XCTAssertEqual(result1["MAIN"]!.products.first!.complete, true)
+    XCTAssertEqual(result1[DEFAULT_TEST_LIST_ID]!.products.first!.complete, true)
     
     let result2 = reducer.reduce(
       state: initialState,
-      action: .UncompleteProduct(listId: "MAIN", productId: productId)
+      action: .UncompleteProduct(listId: DEFAULT_TEST_LIST_ID, productId: productId)
     )
     
-    XCTAssertEqual(result2["MAIN"]!.products.first!.complete, false)
+    XCTAssertEqual(result2[DEFAULT_TEST_LIST_ID]!.products.first!.complete, false)
   }
 }
 
@@ -95,10 +97,10 @@ func emptyListState() -> OrderedState<ProductsList> {
 }
 
 func defaultListState() -> OrderedState<ProductsList> {
-  OrderedState(ProductsList(id: "MAIN", name: "Main List"))
+  OrderedState(ProductsList(id: DEFAULT_TEST_LIST_ID, name: "Main List"))
 }
 
 func defaultStateWithProduct() -> OrderedState<ProductsList> {
   let products = OrderedState(ProductStatus(id: "FirstItem", complete: false))
-  return OrderedState(ProductsList(id: "MAIN", name: "Main List", products: products))
+  return OrderedState(ProductsList(id: DEFAULT_TEST_LIST_ID, name: "Main List", products: products))
 }

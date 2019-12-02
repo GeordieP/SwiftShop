@@ -22,11 +22,19 @@ struct ProductsPage: View {
     self.dispatch(AppAction.DeleteProduct(id: id))
   }
   
+  func addProductToList(id: String) {
+    self.dispatch(AppAction.AddProductToList(productId: id, listId: AppConstants.DEFAULT_LIST_ID))
+  }
+  
   var body: some View {
     VStack() {
       AddProductForm(onSubmit: createProduct).frame(height: 220.0)
       ProductFilterBar(filterManager: filters)
-      ProductListView(products: filters.apply(to: props.products.values), deleteProduct: deleteProduct)
+      ProductListView(
+        products: filters.apply(to: props.products.values),
+        addProductToList: addProductToList,
+        deleteProduct: deleteProduct
+      )
     }
   }
 }

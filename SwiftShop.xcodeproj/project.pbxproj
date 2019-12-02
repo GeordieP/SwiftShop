@@ -17,7 +17,7 @@
 		E72F0335238078AB00FAADE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72F0334238078AB00FAADE7 /* Preview Assets.xcassets */; };
 		E72F0338238078AB00FAADE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72F0336238078AB00FAADE7 /* LaunchScreen.storyboard */; };
 		E72F034E238078AB00FAADE7 /* SwiftShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */; };
-		E74C6E8F23807CD50014DEDB /* ListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E8E23807CD50014DEDB /* ListPage.swift */; };
+		E74C6E8F23807CD50014DEDB /* ListsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E8E23807CD50014DEDB /* ListsPage.swift */; };
 		E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9123807D3A0014DEDB /* ProductsPage.swift */; };
 		E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9323807D680014DEDB /* TagsPage.swift */; };
 		E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9523807D830014DEDB /* SettingsPage.swift */; };
@@ -28,6 +28,7 @@
 		E78835C3238094140039CFD0 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C2238094140039CFD0 /* Products.swift */; };
 		E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C6238094D60039CFD0 /* ProductsReducer.swift */; };
 		E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C82380B53A0039CFD0 /* AddProductForm.swift */; };
+		E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C02DD923941A13001CC5C0 /* AppConstants.swift */; };
 		E7E98AE0238D614700D596D4 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98ADF238D614700D596D4 /* ProductsList.swift */; };
 		E7E98AE4238D635B00D596D4 /* ListsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98AE3238D635B00D596D4 /* ListsReducer.swift */; };
 		E7E98AED238EC96B00D596D4 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98AEC238EC96B00D596D4 /* AppActions.swift */; };
@@ -68,7 +69,7 @@
 		E72F0349238078AB00FAADE7 /* SwiftShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftShopUITests.swift; sourceTree = "<group>"; };
 		E72F034F238078AC00FAADE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E74C6E8E23807CD50014DEDB /* ListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPage.swift; sourceTree = "<group>"; };
+		E74C6E8E23807CD50014DEDB /* ListsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsPage.swift; sourceTree = "<group>"; };
 		E74C6E9123807D3A0014DEDB /* ProductsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsPage.swift; sourceTree = "<group>"; };
 		E74C6E9323807D680014DEDB /* TagsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPage.swift; sourceTree = "<group>"; };
 		E74C6E9523807D830014DEDB /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		E78835C2238094140039CFD0 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		E78835C6238094D60039CFD0 /* ProductsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsReducer.swift; sourceTree = "<group>"; };
 		E78835C82380B53A0039CFD0 /* AddProductForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductForm.swift; sourceTree = "<group>"; };
+		E7C02DD923941A13001CC5C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E7E98ADF238D614700D596D4 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
 		E7E98AE3238D635B00D596D4 /* ListsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsReducer.swift; sourceTree = "<group>"; };
 		E7E98AEC238EC96B00D596D4 /* AppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				E72F0336238078AB00FAADE7 /* LaunchScreen.storyboard */,
 				E72F0339238078AB00FAADE7 /* Info.plist */,
 				E72F0333238078AB00FAADE7 /* Preview Content */,
+				E7C02DD923941A13001CC5C0 /* AppConstants.swift */,
 			);
 			path = SwiftShop;
 			sourceTree = "<group>";
@@ -194,8 +197,8 @@
 		E74C6E8D23807B250014DEDB /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				E7C02DD8239419B1001CC5C0 /* ListsPage */,
 				E769619E2380BF3400D75545 /* ProductsPage */,
-				E74C6E8E23807CD50014DEDB /* ListPage.swift */,
 				E74C6E9323807D680014DEDB /* TagsPage.swift */,
 				E74C6E9523807D830014DEDB /* SettingsPage.swift */,
 			);
@@ -239,6 +242,14 @@
 				E78835C6238094D60039CFD0 /* ProductsReducer.swift */,
 			);
 			path = Products;
+			sourceTree = "<group>";
+		};
+		E7C02DD8239419B1001CC5C0 /* ListsPage */ = {
+			isa = PBXGroup;
+			children = (
+				E74C6E8E23807CD50014DEDB /* ListsPage.swift */,
+			);
+			path = ListsPage;
 			sourceTree = "<group>";
 		};
 		E7E98ADE238D613300D596D4 /* Lists */ = {
@@ -387,11 +398,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */,
 				E72F032C238078AB00FAADE7 /* AppDelegate.swift in Sources */,
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
 				E7E98AE0238D614700D596D4 /* ProductsList.swift in Sources */,
 				E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */,
-				E74C6E8F23807CD50014DEDB /* ListPage.swift in Sources */,
+				E74C6E8F23807CD50014DEDB /* ListsPage.swift in Sources */,
 				E78835C0238093B30039CFD0 /* AppReducer.swift in Sources */,
 				E78835BD238092AF0039CFD0 /* AppState.swift in Sources */,
 				E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */,

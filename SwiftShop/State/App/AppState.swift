@@ -16,7 +16,10 @@ let DEFAULT_PRODUCTS = OrderedState(
   Product(id: "4", name: "Fourth", price: 0.00)
 )
 
-let DEFAULT_LISTS = OrderedState(ProductsList(id: "MAIN", name: "Main List"))
+let DEFAULT_LISTS = OrderedState(ProductsList(
+  id: AppConstants.DEFAULT_LIST_ID,
+  name: AppConstants.DEFAULT_LIST_NAME
+))
 
 struct AppState : StateType {
   var products: OrderedState<Product> = DEFAULT_PRODUCTS
