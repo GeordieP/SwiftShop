@@ -49,6 +49,10 @@ extension AppDatabase {
         
         t.column("listId", .integer)
           .references("List", onDelete: .cascade)
+        
+        t.column("complete", .boolean)
+          .notNull()
+          .defaults(to: false)
       }
     }
     
