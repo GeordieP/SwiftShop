@@ -28,6 +28,9 @@
 		E78835C3238094140039CFD0 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C2238094140039CFD0 /* Products.swift */; };
 		E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C6238094D60039CFD0 /* ProductsReducer.swift */; };
 		E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C82380B53A0039CFD0 /* AddProductForm.swift */; };
+		E79834802399D80100F4A09B /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E798347F2399D80100F4A09B /* GRDB */; };
+		E79834832399D82800F4A09B /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = E79834822399D82800F4A09B /* GRDBCombine */; };
+		E79834862399D91200F4A09B /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834852399D91200F4A09B /* AppDatabase.swift */; };
 		E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C02DD923941A13001CC5C0 /* AppConstants.swift */; };
 		E7E98AE0238D614700D596D4 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98ADF238D614700D596D4 /* ProductsList.swift */; };
 		E7E98AE4238D635B00D596D4 /* ListsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98AE3238D635B00D596D4 /* ListsReducer.swift */; };
@@ -79,6 +82,7 @@
 		E78835C2238094140039CFD0 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		E78835C6238094D60039CFD0 /* ProductsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsReducer.swift; sourceTree = "<group>"; };
 		E78835C82380B53A0039CFD0 /* AddProductForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductForm.swift; sourceTree = "<group>"; };
+		E79834852399D91200F4A09B /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 		E7C02DD923941A13001CC5C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E7E98ADF238D614700D596D4 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
 		E7E98AE3238D635B00D596D4 /* ListsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsReducer.swift; sourceTree = "<group>"; };
@@ -91,7 +95,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E79834832399D82800F4A09B /* GRDBCombine in Frameworks */,
 				E78835BB238092020039CFD0 /* SwiftDux in Frameworks */,
+				E79834802399D80100F4A09B /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +141,7 @@
 		E72F032A238078AB00FAADE7 /* SwiftShop */ = {
 			isa = PBXGroup;
 			children = (
+				E79834842399D89200F4A09B /* Models */,
 				E74C6E8D23807B250014DEDB /* Containers */,
 				E74C6E8C23807AFA0014DEDB /* State */,
 				E74C6E8B23807AE30014DEDB /* Views */,
@@ -244,6 +251,14 @@
 			path = Products;
 			sourceTree = "<group>";
 		};
+		E79834842399D89200F4A09B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E79834852399D91200F4A09B /* AppDatabase.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E7C02DD8239419B1001CC5C0 /* ListsPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +294,8 @@
 			name = SwiftShop;
 			packageProductDependencies = (
 				E78835BA238092020039CFD0 /* SwiftDux */,
+				E798347F2399D80100F4A09B /* GRDB */,
+				E79834822399D82800F4A09B /* GRDBCombine */,
 			);
 			productName = SwiftShop;
 			productReference = E72F0328238078AB00FAADE7 /* SwiftShop.app */;
@@ -354,6 +371,8 @@
 			mainGroup = E72F031F238078AB00FAADE7;
 			packageReferences = (
 				E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */,
+				E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				E79834812399D82800F4A09B /* XCRemoteSwiftPackageReference "GRDBCombine" */,
 			);
 			productRefGroup = E72F0329238078AB00FAADE7 /* Products */;
 			projectDirPath = "";
@@ -412,6 +431,7 @@
 				E772916C238B1C7A001894ED /* ProductListView.swift in Sources */,
 				E72F0330238078AB00FAADE7 /* ContentView.swift in Sources */,
 				E712CAE9238355F400FD6C3F /* FilterManager.swift in Sources */,
+				E79834862399D91200F4A09B /* AppDatabase.swift in Sources */,
 				E712CAEB23835F0200FD6C3F /* ProductFilterBar.swift in Sources */,
 				E78835C3238094140039CFD0 /* Products.swift in Sources */,
 				E7E98AED238EC96B00D596D4 /* AppActions.swift in Sources */,
@@ -746,6 +766,22 @@
 				minimumVersion = 0.11.2;
 			};
 		};
+		E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.2;
+			};
+		};
+		E79834812399D82800F4A09B /* XCRemoteSwiftPackageReference "GRDBCombine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDBCombine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -753,6 +789,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */;
 			productName = SwiftDux;
+		};
+		E798347F2399D80100F4A09B /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		E79834822399D82800F4A09B /* GRDBCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E79834812399D82800F4A09B /* XCRemoteSwiftPackageReference "GRDBCombine" */;
+			productName = GRDBCombine;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

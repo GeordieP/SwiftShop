@@ -2,6 +2,24 @@
   "object": {
     "pins": [
       {
+        "package": "GRDB",
+        "repositoryURL": "https://github.com/groue/GRDB.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "a67070dd9a08dad455e9f2895a0c40921d31fa1c",
+          "version": "4.6.2"
+        }
+      },
+      {
+        "package": "GRDBCombine",
+        "repositoryURL": "https://github.com/groue/GRDBCombine.git",
+        "state": {
+          "branch": null,
+          "revision": "d2819f45f7e98244da5049d4ff136f87d423b8ea",
+          "version": "0.7.0"
+        }
+      },
+      {
         "package": "SwiftDux",
         "repositoryURL": "https://github.com/StevenLambion/SwiftDux",
         "state": {
