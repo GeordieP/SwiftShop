@@ -11,7 +11,7 @@ import SwiftUI
 let DEFAULT_PRICE = "0.00"
 
 struct AddProductForm: View {
-  var onSubmit: (String, Float) -> () // this is passed in from whatever renders us
+  var onSubmit: (String, Double) -> () // this is passed in from whatever renders us
   
   @State private var name = ""
   @State private var price = DEFAULT_PRICE
@@ -30,11 +30,12 @@ struct AddProductForm: View {
   }
   
   func handleSubmit() {
-    guard let price = Float(price) else {
+    guard let price = Double(price) else {
       return
     }
     
     onSubmit(name, price)
+    
     self.name = ""
     self.price = DEFAULT_PRICE
   }
@@ -45,5 +46,5 @@ struct AddProductForm_Previews: PreviewProvider {
     AddProductForm(onSubmit: mockOnSubmit)
   }
   
-  static func mockOnSubmit(name: String, price: Float) {}
+  static func mockOnSubmit(name: String, price: Double) {}
 }

@@ -6,27 +6,27 @@
 //  Copyright © 2019 Geordie Powers. All rights reserved.
 //
 
-protocol ProductType {
+protocol Product : Identifiable {
   var id: Int64? { get set }
   var name: String { get set }
   var price: Double { get set }
   var tags: [Tag] { get set }
 }
 
-struct SimpleProduct : ProductType {
+struct SimpleProduct : Product { // rename to baseproduct?
   var id: Int64?
   var name: String
   var price: Double
-  var tags: [Tag]
+  var tags: [Tag] = []
 }
 
-struct ListedProduct : ProductType {
+struct ListedProduct : Product {
   var id: Int64?
   var name: String
   var price: Double
   var tags: [Tag]
   
   var complete: Bool
-  var listId: Int64?
+  var listId: Int64
 }
 

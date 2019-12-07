@@ -23,25 +23,22 @@
 		E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C6E9523807D830014DEDB /* SettingsPage.swift */; };
 		E772916C238B1C7A001894ED /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E772916B238B1C7A001894ED /* ProductListView.swift */; };
 		E78835BB238092020039CFD0 /* SwiftDux in Frameworks */ = {isa = PBXBuildFile; productRef = E78835BA238092020039CFD0 /* SwiftDux */; };
-		E78835BD238092AF0039CFD0 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835BC238092AF0039CFD0 /* AppState.swift */; };
-		E78835C0238093B30039CFD0 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835BF238093B30039CFD0 /* AppReducer.swift */; };
-		E78835C3238094140039CFD0 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C2238094140039CFD0 /* Products.swift */; };
-		E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C6238094D60039CFD0 /* ProductsReducer.swift */; };
 		E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78835C82380B53A0039CFD0 /* AddProductForm.swift */; };
 		E79834802399D80100F4A09B /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E798347F2399D80100F4A09B /* GRDB */; };
 		E79834832399D82800F4A09B /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = E79834822399D82800F4A09B /* GRDBCombine */; };
 		E79834862399D91200F4A09B /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834852399D91200F4A09B /* AppDatabase.swift */; };
-		E79834892399DD4200F4A09B /* ListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834882399DD4200F4A09B /* ListEntity.swift */; };
+		E79834892399DD4200F4A09B /* ProductListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834882399DD4200F4A09B /* ProductListEntity.swift */; };
 		E798348B2399DD7600F4A09B /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798348A2399DD7600F4A09B /* ProductEntity.swift */; };
 		E798348D2399DDA000F4A09B /* ProductStateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798348C2399DDA000F4A09B /* ProductStateEntity.swift */; };
 		E798348F2399DE1400F4A09B /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798348E2399DE1400F4A09B /* TagEntity.swift */; };
 		E79834912399DE9300F4A09B /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834902399DE9300F4A09B /* ProductList.swift */; };
 		E79834932399DFEB00F4A09B /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834922399DFEB00F4A09B /* Product.swift */; };
 		E79834952399E02700F4A09B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834942399E02700F4A09B /* Tag.swift */; };
+		E798349A239B380400F4A09B /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7983499239B380400F4A09B /* ProductListRepository.swift */; };
+		E798349C239B50FA00F4A09B /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798349B239B50FA00F4A09B /* ProductRepository.swift */; };
+		E79834A0239B55C100F4A09B /* TESTVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798349F239B55C100F4A09B /* TESTVIEW.swift */; };
 		E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C02DD923941A13001CC5C0 /* AppConstants.swift */; };
-		E7E98AE0238D614700D596D4 /* ProductsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98ADF238D614700D596D4 /* ProductsList.swift */; };
-		E7E98AE4238D635B00D596D4 /* ListsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98AE3238D635B00D596D4 /* ListsReducer.swift */; };
-		E7E98AED238EC96B00D596D4 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E98AEC238EC96B00D596D4 /* AppActions.swift */; };
+		E7E95821239C2D7800422E74 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E95820239C2D7800422E74 /* AppModel.swift */; };
 		E7FCF2352381A5D2003881AD /* ProductStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FCF2342381A5D2003881AD /* ProductStateTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,23 +81,20 @@
 		E74C6E9323807D680014DEDB /* TagsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsPage.swift; sourceTree = "<group>"; };
 		E74C6E9523807D830014DEDB /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		E772916B238B1C7A001894ED /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
-		E78835BC238092AF0039CFD0 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		E78835BF238093B30039CFD0 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		E78835C2238094140039CFD0 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
-		E78835C6238094D60039CFD0 /* ProductsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsReducer.swift; sourceTree = "<group>"; };
 		E78835C82380B53A0039CFD0 /* AddProductForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductForm.swift; sourceTree = "<group>"; };
 		E79834852399D91200F4A09B /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		E79834882399DD4200F4A09B /* ListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEntity.swift; sourceTree = "<group>"; };
+		E79834882399DD4200F4A09B /* ProductListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListEntity.swift; sourceTree = "<group>"; };
 		E798348A2399DD7600F4A09B /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		E798348C2399DDA000F4A09B /* ProductStateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStateEntity.swift; sourceTree = "<group>"; };
 		E798348E2399DE1400F4A09B /* TagEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		E79834902399DE9300F4A09B /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		E79834922399DFEB00F4A09B /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E79834942399E02700F4A09B /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		E7983499239B380400F4A09B /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
+		E798349B239B50FA00F4A09B /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
+		E798349F239B55C100F4A09B /* TESTVIEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTVIEW.swift; sourceTree = "<group>"; };
 		E7C02DD923941A13001CC5C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		E7E98ADF238D614700D596D4 /* ProductsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsList.swift; sourceTree = "<group>"; };
-		E7E98AE3238D635B00D596D4 /* ListsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsReducer.swift; sourceTree = "<group>"; };
-		E7E98AEC238EC96B00D596D4 /* AppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
+		E7E95820239C2D7800422E74 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		E7FCF2342381A5D2003881AD /* ProductStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,19 +149,21 @@
 		E72F032A238078AB00FAADE7 /* SwiftShop */ = {
 			isa = PBXGroup;
 			children = (
+				E7983498239B37DC00F4A09B /* Repositories */,
 				E79834872399DD2A00F4A09B /* Entities */,
 				E79834842399D89200F4A09B /* Models */,
 				E74C6E8D23807B250014DEDB /* Containers */,
-				E74C6E8C23807AFA0014DEDB /* State */,
 				E74C6E8B23807AE30014DEDB /* Views */,
 				E72F032B238078AB00FAADE7 /* AppDelegate.swift */,
 				E72F032D238078AB00FAADE7 /* SceneDelegate.swift */,
 				E72F032F238078AB00FAADE7 /* ContentView.swift */,
+				E7C02DD923941A13001CC5C0 /* AppConstants.swift */,
+				E79834852399D91200F4A09B /* AppDatabase.swift */,
+				E7E95820239C2D7800422E74 /* AppModel.swift */,
 				E72F0331238078AB00FAADE7 /* Assets.xcassets */,
 				E72F0336238078AB00FAADE7 /* LaunchScreen.storyboard */,
 				E72F0339238078AB00FAADE7 /* Info.plist */,
 				E72F0333238078AB00FAADE7 /* Preview Content */,
-				E7C02DD923941A13001CC5C0 /* AppConstants.swift */,
 			);
 			path = SwiftShop;
 			sourceTree = "<group>";
@@ -202,18 +198,9 @@
 		E74C6E8B23807AE30014DEDB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E798349F239B55C100F4A09B /* TESTVIEW.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		E74C6E8C23807AFA0014DEDB /* State */ = {
-			isa = PBXGroup;
-			children = (
-				E7E98ADE238D613300D596D4 /* Lists */,
-				E78835C1238093F20039CFD0 /* Products */,
-				E78835BE238093A10039CFD0 /* App */,
-			);
-			path = State;
 			sourceTree = "<group>";
 		};
 		E74C6E8D23807B250014DEDB /* Containers */ = {
@@ -247,29 +234,9 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E78835BE238093A10039CFD0 /* App */ = {
-			isa = PBXGroup;
-			children = (
-				E78835BC238092AF0039CFD0 /* AppState.swift */,
-				E78835BF238093B30039CFD0 /* AppReducer.swift */,
-				E7E98AEC238EC96B00D596D4 /* AppActions.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		E78835C1238093F20039CFD0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E78835C2238094140039CFD0 /* Products.swift */,
-				E78835C6238094D60039CFD0 /* ProductsReducer.swift */,
-			);
-			path = Products;
-			sourceTree = "<group>";
-		};
 		E79834842399D89200F4A09B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E79834852399D91200F4A09B /* AppDatabase.swift */,
 				E79834902399DE9300F4A09B /* ProductList.swift */,
 				E79834922399DFEB00F4A09B /* Product.swift */,
 				E79834942399E02700F4A09B /* Tag.swift */,
@@ -280,12 +247,21 @@
 		E79834872399DD2A00F4A09B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E79834882399DD4200F4A09B /* ListEntity.swift */,
+				E79834882399DD4200F4A09B /* ProductListEntity.swift */,
 				E798348A2399DD7600F4A09B /* ProductEntity.swift */,
 				E798348C2399DDA000F4A09B /* ProductStateEntity.swift */,
 				E798348E2399DE1400F4A09B /* TagEntity.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		E7983498239B37DC00F4A09B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E7983499239B380400F4A09B /* ProductListRepository.swift */,
+				E798349B239B50FA00F4A09B /* ProductRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		E7C02DD8239419B1001CC5C0 /* ListsPage */ = {
@@ -294,15 +270,6 @@
 				E74C6E8E23807CD50014DEDB /* ListsPage.swift */,
 			);
 			path = ListsPage;
-			sourceTree = "<group>";
-		};
-		E7E98ADE238D613300D596D4 /* Lists */ = {
-			isa = PBXGroup;
-			children = (
-				E7E98ADF238D614700D596D4 /* ProductsList.swift */,
-				E7E98AE3238D635B00D596D4 /* ListsReducer.swift */,
-			);
-			path = Lists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,25 +417,22 @@
 				E72F032C238078AB00FAADE7 /* AppDelegate.swift in Sources */,
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
 				E798348F2399DE1400F4A09B /* TagEntity.swift in Sources */,
-				E7E98AE0238D614700D596D4 /* ProductsList.swift in Sources */,
+				E798349C239B50FA00F4A09B /* ProductRepository.swift in Sources */,
 				E798348D2399DDA000F4A09B /* ProductStateEntity.swift in Sources */,
-				E78835C7238094D60039CFD0 /* ProductsReducer.swift in Sources */,
 				E74C6E8F23807CD50014DEDB /* ListsPage.swift in Sources */,
 				E798348B2399DD7600F4A09B /* ProductEntity.swift in Sources */,
-				E78835C0238093B30039CFD0 /* AppReducer.swift in Sources */,
-				E78835BD238092AF0039CFD0 /* AppState.swift in Sources */,
 				E79834912399DE9300F4A09B /* ProductList.swift in Sources */,
 				E78835C92380B53A0039CFD0 /* AddProductForm.swift in Sources */,
-				E7E98AE4238D635B00D596D4 /* ListsReducer.swift in Sources */,
+				E79834A0239B55C100F4A09B /* TESTVIEW.swift in Sources */,
 				E74C6E9423807D680014DEDB /* TagsPage.swift in Sources */,
 				E772916C238B1C7A001894ED /* ProductListView.swift in Sources */,
 				E72F0330238078AB00FAADE7 /* ContentView.swift in Sources */,
 				E712CAE9238355F400FD6C3F /* FilterManager.swift in Sources */,
 				E79834862399D91200F4A09B /* AppDatabase.swift in Sources */,
-				E79834892399DD4200F4A09B /* ListEntity.swift in Sources */,
+				E79834892399DD4200F4A09B /* ProductListEntity.swift in Sources */,
+				E7E95821239C2D7800422E74 /* AppModel.swift in Sources */,
 				E712CAEB23835F0200FD6C3F /* ProductFilterBar.swift in Sources */,
-				E78835C3238094140039CFD0 /* Products.swift in Sources */,
-				E7E98AED238EC96B00D596D4 /* AppActions.swift in Sources */,
+				E798349A239B380400F4A09B /* ProductListRepository.swift in Sources */,
 				E74C6E9623807D830014DEDB /* SettingsPage.swift in Sources */,
 				E79834952399E02700F4A09B /* Tag.swift in Sources */,
 				E74C6E9223807D3A0014DEDB /* ProductsPage.swift in Sources */,
@@ -639,6 +603,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftShop/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftShop/Info.plist;
@@ -658,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftShop/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftShop/Info.plist;

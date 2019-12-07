@@ -13,4 +13,3 @@ struct ProductList {
   var name: String
   var products: [ListedProduct]
 }
-

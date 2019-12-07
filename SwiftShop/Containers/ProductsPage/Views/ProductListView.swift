@@ -8,33 +8,50 @@
 
 import SwiftUI
 
-struct ProductListView: View {
-  var products: [Product]
-  var addProductToList: (String) -> Void
-  var deleteProduct: (String) -> Void
+struct ProductListView<P: Product>: View {
+  var products: [P]
+  //  var addProductToList: (Int64) -> Void
+  var deleteProduct: (Int64) -> Void
   
   func onDelete(indices: IndexSet) {
     guard let index = indices.first else { return }
     if index > products.count { return }
-    deleteProduct(products[index].id)
+    deleteProduct(products[index].id!) // TODO: don't ! here
   }
   
-  func onTap(_ productId: String) {
-    addProductToList(productId)
-  }
-
+    func onTap(_ productId: Int64) {
+//      addProductToList(productId)
+      print("product tapped")
+    }
+  
   var body: some View {
     List {
       ForEach(products) { p in
-        Button(action: { self.onTap(p.id) }) {
+        Button(action: { self.onTap(p.id!) }) {
           HStack {
+            Text("\(p.id!):")
             Text(p.name)
             Spacer()
             Text(String(p.price))
           }
         }
-      }
-      .onDelete(perform: onDelete)
+      }.onDelete(perform: onDelete)
     }
   }
+  
+  //  var body: some View {
+  //    return List {
+  //      ForEach(products, id: \.id!) { p in
+  //        Button(action: { self.onTap(p.id) }) {
+  //          HStack {
+  //            Text("\(p.id!):")
+  //            Text(p.name)
+  //            Spacer()
+  //            Text(String(p.price))
+  //          }
+  //        }
+  //      }
+  //      .onDelete(perform: onDelete)
+  //    }
+  //  }
 }
