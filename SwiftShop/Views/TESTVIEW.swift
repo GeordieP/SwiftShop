@@ -10,39 +10,63 @@ import SwiftUI
 import Combine
 
 class TESTVIEWModel : ObservableObject {
-  @Published var products: [SimpleProduct] = []
-  private var cancellables: [AnyCancellable] = [] // TODO: what is this, what does it do?
+  @Published var lists: [ProductList] = []
+  @Published var products: [ListedProduct] = []
+  @Published var doneSetup = false
+  private var cancellables: [AnyCancellable] = []
   
   init() {
-    App.products()
-      .publisher()
+    App
+      .lists()
+      .productListPublisher()
+      .fetchOnSubscription()
+      .catch { _ in Empty() } // TODO: handle db errors
+      .sink { self.lists = $0 }
+      .store(in: &cancellables)
+  }
+  
+  func doSetup() {
+    do {
+      try App.TEMP_testSetup()
+    } catch {
+      print(error)
+    }
+  }
+  
+  func afterSetup() {
+    let firstListId = lists.first!.id
+    
+    App
+      .products()
+      .listedProductPublisher(listId: firstListId)
       .fetchOnSubscription()
       .catch { _ in Empty() } // TODO: handle db errors
       .sink { self.products = $0 }
       .store(in: &cancellables)
+    
+    doneSetup.toggle()
   }
   
-  func addProduct(name: String, price: Double) {
+  func addAnotherTag() {
     do {
-      try App.products()
-        .add(newProduct: SimpleProduct(name: name, price: price))
+      let firstProductId = products.first!.id
+      
+      try App
+        .products()
+        .testTagProduct(productId: firstProductId)
     } catch {
       print(error)
     }
   }
   
-  func deleteProduct(id: Int64) {
+  func completeProduct(productId: Int64) {
     do {
-      try App.products()
-      .remove(id)
-    } catch {
-      print(error)
-    }
-  }
-  
-  func deleteAllProducts() {
-    do {
-      try App.products().removeAll()
+      let firstListId = lists.first!.id
+      let firstProductId = products.first!.id
+      
+      try App
+        .products()
+        .completeProductInList(productId: firstProductId, listId: firstListId)
     } catch {
       print(error)
     }
@@ -51,19 +75,65 @@ class TESTVIEWModel : ObservableObject {
 
 struct TESTVIEW: View {
   @ObservedObject private var state: TESTVIEWModel = TESTVIEWModel()
-
+  
   var body: some View {
     VStack {
-      AddProductForm(onSubmit: state.addProduct)
-      
-      Button(action: state.deleteAllProducts) {
-        Text("Delete All")
+      List {
+        TestBtn(action: state.doSetup,
+                text: "Set up test DB")
+        TestBtn(action: state.afterSetup,
+                text: "Subscribe to products publisher")
+        TestBtn(action: state.addAnotherTag,
+                text: "Add another tag to product 1")
+        
+        Spacer()
+        
+        List {
+          ForEach(state.lists, id: \.id) { list in
+            Text("list: \(list.name)")
+          }
+        }
+        
+        Spacer()
+        
+        if state.doneSetup {
+          MyListView(products: state.products, completeProduct: state.completeProduct)
+        }
       }
-      
-      Spacer()
-      
-      ProductListView(products: state.products, deleteProduct: state.deleteProduct)
     }
   }
 }
 
+struct TestBtn: View {
+  var action: () -> Void
+  var text: String
+  
+  var body: some View {
+    Button(action: action) {
+      HStack {
+        Image("first")
+        Text(text)
+      }
+    }
+  }
+}
+
+struct MyListView: View {
+  var products: [ListedProduct] = []
+  var completeProduct: (Int64) -> Void
+  
+  var body: some View {
+    List(products) { p in
+      Button(action: { self.completeProduct(p.id) }) {
+        HStack {
+          Text(p.name)
+          Spacer()
+          Text("Complete: \(String(p.complete))")
+          Spacer()
+          Text("[\(p.tags.map({ $0.name }).joined(separator: ","))]")
+            .font(.footnote)
+        }
+      }
+    }
+  }
+}

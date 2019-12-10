@@ -2,60 +2,65 @@
 //  ProductRepository.swift
 //  SwiftShop
 //
-//  Created by Geordie Powers on 2019-12-06.
+//  Created by Geordie Powers on 2019-12-08.
 //  Copyright © 2019 Geordie Powers. All rights reserved.
 //
 
-import Combine
 import GRDB
 import GRDBCombine
-import Dispatch
 
 struct ProductRepository {
   private var database: DatabaseWriter
-}
   
-extension ProductRepository {
   init(_ db: DatabaseWriter) {
     database = db
   }
-  
-  func publisher() -> DatabasePublishers.Value<[SimpleProduct]> {
-    ValueObservation
-      .tracking(value: { db in
-        let products = try ProductEntity.fetchAll(db)
-        // let tags = try TagEntity.fetchAll(db) ...
-        
-        return products.map({
-          SimpleProduct(
-            id: $0.id!,
-            name: $0.name,
-            price: $0.price,
-            tags: []
-          )
-        })
-      })
-      .publisher(in: database)
+}
+
+// MARK: - Publishers
+
+extension ProductRepository {
+  func listedProductPublisher(listId: Int64) -> DatabasePublishers.Value<[ListedProduct]> {
+    ValueObservation.tracking(value: { db in
+      let request = ProductStatusEntity
+        .all()
+        .filter(Column("listId") == listId)
+        .including(required: ProductStatusEntity.product
+          .including(all: ProductEntity.tags))
+      
+      return try ListedProductFetcher
+        .fetchAll(db, request)
+        .map { $0.toListedProduct() }
+    }).publisher(in: database)
   }
 }
 
+// MARK: - Actions
+
 extension ProductRepository {
-  func add<P: Product>(newProduct product: P) throws {
+  func testTagProduct(productId: Int64) throws {
     try database.write { db in
-      var entity = ProductEntity(name: product.name, price: product.price)
-      try entity.insert(db)
+      // make a tag to use for now
+      var newTag = TagEntity(id: nil, name: "2nd", color: "red")
+      try newTag.insert(db)
+      
+      // make an association with given product
+      var newProductTag = ProductTagEntity(productId: productId, tagId: newTag.id!)
+      try newProductTag.insert(db)
     }
   }
   
-  func remove(_ id: Int64) throws {
+  func completeProductInList(productId: Int64, listId: Int64) throws {
     try database.write { db in
-      _ = try ProductEntity.deleteOne(db, key: id)
-    }
-  }
-  
-  func removeAll() throws {
-    try database.write { db in
-      _ =  try ProductEntity.deleteAll(db)
+      var productStatus = try ProductStatusEntity
+        .filter(Column("listId") == listId && Column("productId") == productId)
+        .fetchOne(db)
+      
+      productStatus!.complete = true
+      // NOTE: TODO: FIXME: Update here fails:
+      // "Key not found in table productStatusEntity: [rowid:NULL]"
+      // maybe because this entity doesn't have a PK, and GRDB isn't bringing along the rowID property?
+      try productStatus!.update(db)
     }
   }
 }

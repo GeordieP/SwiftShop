@@ -2,33 +2,41 @@
 //  TagEntity.swift
 //  SwiftShop
 //
-//  Created by Geordie Powers on 2019-12-05.
+//  Created by Geordie Powers on 2019-12-08.
 //  Copyright © 2019 Geordie Powers. All rights reserved.
 //
 
 import GRDB
-import SwiftUI
 
-extension TableNames {
-  static let TagEntity = "Tag"
-}
-
-struct TagEntity: Identifiable {
+struct TagEntity: Codable {
   var id: Int64?
   var name: String
   var color: String
 }
 
-extension TagEntity: Codable, FetchableRecord, MutablePersistableRecord {
-  static let databaseTableName = TableNames.TagEntity
+// MARK: - GRDB
+
+extension TagEntity: TableRecord {
+  static let productTags = hasMany(ProductTagEntity.self)
+  static let products = hasMany(ProductEntity.self, through: productTags, using: ProductTagEntity.product)
   
-  fileprivate enum Columns {
+  enum Columns {
     static let id = Column(CodingKeys.id)
     static let name = Column(CodingKeys.name)
     static let color = Column(CodingKeys.color)
   }
-  
-//  mutating func didInsert(with rowID: Int64, for column: String?) {
-//    id = rowID
-//  }
+}
+
+extension TagEntity: FetchableRecord, MutablePersistableRecord {
+  mutating func didInsert(with rowID: Int64, for column: String?) {
+    id = rowID
+  }
+}
+
+// MARK: - Mapping 
+
+extension TagEntity {
+  func toTag() -> Tag {
+    Tag(id: self.id!, name: self.name, color: self.color)
+  }
 }

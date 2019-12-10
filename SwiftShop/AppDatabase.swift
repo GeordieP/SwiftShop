@@ -8,13 +8,11 @@
 
 import GRDB
 
-struct TableNames {}
-
 struct AppDatabase {
   static func openDatabase(atPath path: String) throws -> DatabasePool {
     let dbPool = try DatabasePool(path: path)
     
-//    try dbPool.erase()
+    try dbPool.erase()
     try migrator.migrate(dbPool)
     
     return dbPool
@@ -28,7 +26,7 @@ extension AppDatabase {
     migrator.eraseDatabaseOnSchemaChange = true
     
     migrator.registerMigration("createList") { db in
-      try db.create(table: TableNames.ProductListEntity) { t in
+      try db.create(table: "listEntity") { t in
         t.autoIncrementedPrimaryKey("id")
         
         t.column("name", .text)
@@ -38,7 +36,7 @@ extension AppDatabase {
     }
     
     migrator.registerMigration("createProduct") { db in
-      try db.create(table: TableNames.ProductEntity) { t in
+      try db.create(table: "productEntity") { t in
         t.autoIncrementedPrimaryKey("id")
         
         t.column("name", .text)
@@ -49,13 +47,12 @@ extension AppDatabase {
       }
     }
     
-    migrator.registerMigration("createProductState") { db in
-      try db.create(table: TableNames.ProductStateEntity) { t in
-        t.column("productId", .integer)
-          .references(TableNames.ProductEntity, onDelete: .cascade)
-        
+    migrator.registerMigration("createProductStatus") { db in
+      try db.create(table: "productStatusEntity") { t in
         t.column("listId", .integer)
-          .references(TableNames.ProductListEntity, onDelete: .cascade)
+          .references("listEntity", onDelete: .cascade)
+        t.column("productId", .integer)
+          .references("productEntity", onDelete: .cascade)
         
         t.column("complete", .boolean)
           .notNull()
@@ -64,7 +61,7 @@ extension AppDatabase {
     }
     
     migrator.registerMigration("createTag") { db in
-      try db.create(table: TableNames.TagEntity) { t in
+      try db.create(table: "tagEntity") { t in
         t.autoIncrementedPrimaryKey("id")
         
         t.column("name", .text)
@@ -72,6 +69,15 @@ extension AppDatabase {
           .collate(.localizedCaseInsensitiveCompare)
         
         t.column("color", .text)
+      }
+    }
+    
+    migrator.registerMigration("createProductTag") { db in
+      try db.create(table: "productTagEntity") { t in
+        t.column("productId", .integer)
+          .references("productEntity", onDelete: .cascade)
+        t.column("tagId", .integer)
+          .references("tagEntity", onDelete: .cascade)
       }
     }
     
