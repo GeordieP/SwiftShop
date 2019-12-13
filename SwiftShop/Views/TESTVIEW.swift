@@ -12,7 +12,6 @@ import Combine
 class TESTVIEWModel : ObservableObject {
   @Published var lists: [ProductList] = []
   @Published var products: [ListedProduct] = []
-  @Published var doneSetup = false
   private var cancellables: [AnyCancellable] = []
   
   init() {
@@ -23,19 +22,9 @@ class TESTVIEWModel : ObservableObject {
       .catch { _ in Empty() } // TODO: handle db errors
       .sink { self.lists = $0 }
       .store(in: &cancellables)
-  }
-  
-  func doSetup() {
-    do {
-      try App.TEMP_testSetup()
-    } catch {
-      print(error)
-    }
-  }
-  
-  func afterSetup() {
-    let firstListId = lists.first!.id
     
+    let firstListId = lists.first!.id
+
     App
       .products()
       .listedProductPublisher(listId: firstListId)
@@ -43,10 +32,8 @@ class TESTVIEWModel : ObservableObject {
       .catch { _ in Empty() } // TODO: handle db errors
       .sink { self.products = $0 }
       .store(in: &cancellables)
-    
-    doneSetup.toggle()
   }
-  
+
   func addAnotherTag() {
     do {
       let firstProductId = products.first!.id
@@ -59,14 +46,17 @@ class TESTVIEWModel : ObservableObject {
     }
   }
   
-  func completeProduct(productId: Int64) {
+  func setProductComplete(productId: Int64, complete: Bool) {
     do {
       let firstListId = lists.first!.id
-      let firstProductId = products.first!.id
-      
+
       try App
         .products()
-        .completeProductInList(productId: firstProductId, listId: firstListId)
+        .setProductCompleteInList(
+          productId: productId,
+          listId: firstListId,
+          complete: complete
+        )
     } catch {
       print(error)
     }
@@ -78,28 +68,9 @@ struct TESTVIEW: View {
   
   var body: some View {
     VStack {
-      List {
-        TestBtn(action: state.doSetup,
-                text: "Set up test DB")
-        TestBtn(action: state.afterSetup,
-                text: "Subscribe to products publisher")
-        TestBtn(action: state.addAnotherTag,
-                text: "Add another tag to product 1")
-        
-        Spacer()
-        
-        List {
-          ForEach(state.lists, id: \.id) { list in
-            Text("list: \(list.name)")
-          }
-        }
-        
-        Spacer()
-        
-        if state.doneSetup {
-          MyListView(products: state.products, completeProduct: state.completeProduct)
-        }
-      }
+      Text(state.lists.first!.name).font(.title).padding()
+      TestBtn(action: state.addAnotherTag, text: "Add another tag to product 1")
+      MyListView(products: state.products, setProductComplete: state.setProductComplete)
     }
   }
 }
@@ -120,16 +91,24 @@ struct TestBtn: View {
 
 struct MyListView: View {
   var products: [ListedProduct] = []
-  var completeProduct: (Int64) -> Void
-  
+  var setProductComplete: (Int64, Bool) -> Void
+
   var body: some View {
     List(products) { p in
-      Button(action: { self.completeProduct(p.id) }) {
+      Button(action: { self.setProductComplete(p.id, !p.complete) }) {
         HStack {
-          Text(p.name)
+          if p.complete {
+            Image(systemName: "largecircle.fill.circle")
+            Text(p.name)
+              .foregroundColor(.gray)
+              .strikethrough()
+          } else {
+            Image(systemName: "circle")
+            Text(p.name)
+          }
+          
           Spacer()
-          Text("Complete: \(String(p.complete))")
-          Spacer()
+          
           Text("[\(p.tags.map({ $0.name }).joined(separator: ","))]")
             .font(.footnote)
         }

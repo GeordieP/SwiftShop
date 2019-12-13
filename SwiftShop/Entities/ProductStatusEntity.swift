@@ -9,6 +9,8 @@
 import GRDB
 
 struct ProductStatusEntity: Codable {
+  var id: Int64?
+  
   var listId: Int64
   var productId: Int64
   var complete: Bool
@@ -21,10 +23,15 @@ extension ProductStatusEntity: TableRecord {
   static let product = belongsTo(ProductEntity.self)
   
   enum Columns {
+    static let id = Column(CodingKeys.id)
     static let listId = Column(CodingKeys.listId)
     static let productId = Column(CodingKeys.productId)
     static let complete = Column(CodingKeys.complete)
   }
 }
 
-extension ProductStatusEntity: FetchableRecord, MutablePersistableRecord {}
+extension ProductStatusEntity: FetchableRecord, MutablePersistableRecord {
+  mutating func didInsert(with rowID: Int64, for column: String?) {
+    id = rowID
+  }
+}

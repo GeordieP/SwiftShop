@@ -50,16 +50,13 @@ extension ProductRepository {
     }
   }
   
-  func completeProductInList(productId: Int64, listId: Int64) throws {
+  func setProductCompleteInList(productId: Int64, listId: Int64, complete: Bool) throws {
     try database.write { db in
       var productStatus = try ProductStatusEntity
         .filter(Column("listId") == listId && Column("productId") == productId)
         .fetchOne(db)
-      
-      productStatus!.complete = true
-      // NOTE: TODO: FIXME: Update here fails:
-      // "Key not found in table productStatusEntity: [rowid:NULL]"
-      // maybe because this entity doesn't have a PK, and GRDB isn't bringing along the rowID property?
+
+      productStatus!.complete = complete
       try productStatus!.update(db)
     }
   }

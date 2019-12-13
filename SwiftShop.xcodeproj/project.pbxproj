@@ -22,7 +22,6 @@
 		E76B0371239DBC1A00721AAB /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B0370239DBC1A00721AAB /* Tag.swift */; };
 		E76B0373239DC08400721AAB /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B0372239DC08400721AAB /* ProductList.swift */; };
 		E76B0377239DC10E00721AAB /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B0376239DC10E00721AAB /* ProductRepository.swift */; };
-		E78835BB238092020039CFD0 /* SwiftDux in Frameworks */ = {isa = PBXBuildFile; productRef = E78835BA238092020039CFD0 /* SwiftDux */; };
 		E79754B8239D74FE004E98CF /* ListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79754B7239D74FE004E98CF /* ListEntity.swift */; };
 		E79754BA239D75F0004E98CF /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79754B9239D75F0004E98CF /* ProductEntity.swift */; };
 		E79754BE239D7E2B004E98CF /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79754BD239D7E2B004E98CF /* TagEntity.swift */; };
@@ -88,7 +87,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E79834832399D82800F4A09B /* GRDBCombine in Frameworks */,
-				E78835BB238092020039CFD0 /* SwiftDux in Frameworks */,
 				E79834802399D80100F4A09B /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +239,6 @@
 			);
 			name = SwiftShop;
 			packageProductDependencies = (
-				E78835BA238092020039CFD0 /* SwiftDux */,
 				E798347F2399D80100F4A09B /* GRDB */,
 				E79834822399D82800F4A09B /* GRDBCombine */,
 			);
@@ -318,7 +315,6 @@
 			);
 			mainGroup = E72F031F238078AB00FAADE7;
 			packageReferences = (
-				E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */,
 				E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				E79834812399D82800F4A09B /* XCRemoteSwiftPackageReference "GRDBCombine" */,
 			);
@@ -704,14 +700,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/StevenLambion/SwiftDux";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.11.2;
-			};
-		};
 		E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -731,11 +719,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E78835BA238092020039CFD0 /* SwiftDux */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E78835B9238092020039CFD0 /* XCRemoteSwiftPackageReference "SwiftDux" */;
-			productName = SwiftDux;
-		};
 		E798347F2399D80100F4A09B /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */;

@@ -18,15 +18,6 @@
           "revision": "d2819f45f7e98244da5049d4ff136f87d423b8ea",
           "version": "0.7.0"
         }
-      },
-      {
-        "package": "SwiftDux",
-        "repositoryURL": "https://github.com/StevenLambion/SwiftDux",
-        "state": {
-          "branch": null,
-          "revision": "2d479ad90f9c3cfc8b63ce65066db2c9f7c47685",
-          "version": "0.11.2"
-        }
       }
     ]
   },
