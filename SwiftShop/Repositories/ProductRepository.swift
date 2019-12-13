@@ -20,6 +20,17 @@ struct ProductRepository {
 // MARK: - Publishers
 
 extension ProductRepository {
+  func productPublisher() -> DatabasePublishers.Value<[SimpleProduct]> {
+    ValueObservation.tracking(value: { db in
+      let request = ProductEntity
+        .including(all: ProductEntity.tags)
+      
+      return try TaggedProductFetcher
+        .fetchAll(db, request)
+        .map { $0.toSimpleProduct() }
+    }).publisher(in: database)
+  }
+  
   func listedProductPublisher(listId: Int64) -> DatabasePublishers.Value<[ListedProduct]> {
     ValueObservation.tracking(value: { db in
       let request = ProductStatusEntity
