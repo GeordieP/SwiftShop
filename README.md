@@ -18,7 +18,9 @@ A quick & easy shopping list experience for iOS.
 **Technologies**
 
 - [Swift](https://swift.org/), [SwiftUI](https://developer.apple.com/xcode/swiftui/)
-- [SwiftDux](https://github.com/StevenLambion/SwiftDux) (Redux-like state management for SwiftUI by [StevenLambion](https://github.com/StevenLambion))
+- [GRDB](https://github.com/groue/GRDB.swift) by [groue](https://github.com/groue)
+- [GRDBCombine](https://github.com/groue/GRDBCombine) by [groue](https://github.com/groue)
+- [SQLite](https://www.sqlite.org/index.html)
 
 **Requirements**
 
@@ -30,3 +32,5 @@ A quick & easy shopping list experience for iOS.
 I've been writing weekly posts about my experiences using SwiftUI for the first time on my website. Feel free to check them out:
 
 - [Week 1 - Starting out, Filtering Lists](http://gpow.ca/blog/posts/SwiftShop1/)
+- [Week 2 - Lists state & Products search bar](http://gpow.ca/blog/posts/SwiftShop2/)
+- [Week 3 - GRDB](http://gpow.ca/blog/posts/SwiftShop3/)
