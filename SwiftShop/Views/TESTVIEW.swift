@@ -24,7 +24,7 @@ class TESTVIEWModel : ObservableObject {
       .store(in: &cancellables)
     
     let firstListId = lists.first!.id
-
+    
     App
       .products()
       .listedProductPublisher(listId: firstListId)
@@ -33,7 +33,7 @@ class TESTVIEWModel : ObservableObject {
       .sink { self.products = $0 }
       .store(in: &cancellables)
   }
-
+  
   func addAnotherTag() {
     do {
       let firstProductId = products.first!.id
@@ -49,14 +49,14 @@ class TESTVIEWModel : ObservableObject {
   func setProductComplete(productId: Int64, complete: Bool) {
     do {
       let firstListId = lists.first!.id
-
+      
       try App
         .products()
         .setProductCompleteInList(
           productId: productId,
           listId: firstListId,
           complete: complete
-        )
+      )
     } catch {
       print(error)
     }
@@ -92,7 +92,7 @@ struct TestBtn: View {
 struct MyListView: View {
   var products: [ListedProduct] = []
   var setProductComplete: (Int64, Bool) -> Void
-
+  
   var body: some View {
     List(products) { p in
       Button(action: { self.setProductComplete(p.id, !p.complete) }) {
