@@ -10,9 +10,10 @@ import SwiftUI
 
 struct ProductRow<P: Product>: View {
   var product: P
+  var onRowClick: (P) -> Void
   
   var body: some View {
-    Button(action: {}) {
+    Button(action: { self.onRowClick(self.product) }) {
       
       VStack(alignment: .leading) {
         Text(product.name.truncate(at: 45))
@@ -77,8 +78,10 @@ struct ProductRow_Previews: PreviewProvider {
       ),
     ]
     
+    let onRowClick = { (p: SimpleProduct) in return }
+    
     return List(testProducts) { p in
-      ProductRow(product: p)
+      ProductRow(product: p, onRowClick: onRowClick)
     }
   }
 }

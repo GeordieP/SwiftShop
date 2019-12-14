@@ -101,9 +101,11 @@ extension AppDatabase {
       var product1 = ProductEntity(id: nil, name: "First product", price: 3.00)
       var product2 = ProductEntity(id: nil, name: "Second product", price: 2.00)
       var product3 = ProductEntity(id: nil, name: "Third product", price: 1.00)
+      var product4 = ProductEntity(id: nil, name: "Fourth product", price: 16.00)
       try product1.insert(db)
       try product2.insert(db)
       try product3.insert(db)
+      try product4.insert(db)
 
       var tag1 = TagEntity(id: nil, name: "BlueTag", color: "blue")
       var tag2 = TagEntity(id: nil, name: "GreenTag", color: "green")
@@ -118,9 +120,11 @@ extension AppDatabase {
       var productTag1 = ProductTagEntity(productId: product1.id!, tagId: tag1.id!)
       var productTag2 = ProductTagEntity(productId: product1.id!, tagId: tag2.id!)
       var productTag3 = ProductTagEntity(productId: product3.id!, tagId: tag2.id!)
+      var productTag4 = ProductTagEntity(productId: product4.id!, tagId: tag1.id!)
       try productTag1.insert(db)
       try productTag2.insert(db)
       try productTag3.insert(db)
+      try productTag4.insert(db)
     }
     
     return migrator

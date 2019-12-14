@@ -27,6 +27,8 @@
 		E72F034E238078AB00FAADE7 /* SwiftShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */; };
 		E7498BFC239F113700172CFF /* ListedProductFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7498BFB239F113700172CFF /* ListedProductFetcher.swift */; };
 		E7498BFE239F179700172CFF /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7498BFD239F179700172CFF /* ProductListRepository.swift */; };
+		E74A8ECA23A4541100C01293 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = E74A8EC923A4541100C01293 /* PartialSheet */; };
+		E766196C23A461CE007B969C /* ProductEditForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E766196B23A461CE007B969C /* ProductEditForm.swift */; };
 		E76B036F239DBAB700721AAB /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B036E239DBAB700721AAB /* Product.swift */; };
 		E76B0371239DBC1A00721AAB /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B0370239DBC1A00721AAB /* Tag.swift */; };
 		E76B0373239DC08400721AAB /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76B0372239DC08400721AAB /* ProductList.swift */; };
@@ -86,6 +88,7 @@
 		E72F034F238078AC00FAADE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7498BFB239F113700172CFF /* ListedProductFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedProductFetcher.swift; sourceTree = "<group>"; };
 		E7498BFD239F179700172CFF /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
+		E766196B23A461CE007B969C /* ProductEditForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEditForm.swift; sourceTree = "<group>"; };
 		E76B036E239DBAB700721AAB /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E76B0370239DBC1A00721AAB /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E76B0372239DC08400721AAB /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74A8ECA23A4541100C01293 /* PartialSheet in Frameworks */,
 				E79834832399D82800F4A09B /* GRDBCombine in Frameworks */,
 				E79834802399D80100F4A09B /* GRDB in Frameworks */,
 			);
@@ -147,6 +151,7 @@
 			children = (
 				E71FDC7223A4059D005C154E /* ProductRow.swift */,
 				E71FDC7F23A419FD005C154E /* SmallTag.swift */,
+				E766196B23A461CE007B969C /* ProductEditForm.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			packageProductDependencies = (
 				E798347F2399D80100F4A09B /* GRDB */,
 				E79834822399D82800F4A09B /* GRDBCombine */,
+				E74A8EC923A4541100C01293 /* PartialSheet */,
 			);
 			productName = SwiftShop;
 			productReference = E72F0328238078AB00FAADE7 /* SwiftShop.app */;
@@ -368,6 +374,7 @@
 			packageReferences = (
 				E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				E79834812399D82800F4A09B /* XCRemoteSwiftPackageReference "GRDBCombine" */,
+				E74A8EC823A4541100C01293 /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = E72F0329238078AB00FAADE7 /* Products */;
 			projectDirPath = "";
@@ -419,6 +426,7 @@
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
 				E71FDC6B23A3FBD2005C154E /* TagPage.swift in Sources */,
 				E71FDC6D23A3FBE2005C154E /* SettingsPage.swift in Sources */,
+				E766196C23A461CE007B969C /* ProductEditForm.swift in Sources */,
 				E76B036F239DBAB700721AAB /* Product.swift in Sources */,
 				E79754BA239D75F0004E98CF /* ProductEntity.swift in Sources */,
 				E7498BFC239F113700172CFF /* ListedProductFetcher.swift in Sources */,
@@ -760,6 +768,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E74A8EC823A4541100C01293 /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -779,6 +795,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E74A8EC923A4541100C01293 /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E74A8EC823A4541100C01293 /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
+		};
 		E798347F2399D80100F4A09B /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E798347E2399D80100F4A09B /* XCRemoteSwiftPackageReference "GRDB.swift" */;

@@ -49,6 +49,7 @@ extension ProductRepository {
 // MARK: - Actions
 
 extension ProductRepository {
+  // TODO: remove me
   func testTagProduct(productId: Int64) throws {
     try database.write { db in
       // make a tag to use for now
@@ -69,6 +70,30 @@ extension ProductRepository {
 
       productStatus!.complete = complete
       try productStatus!.update(db)
+    }
+  }
+  
+  func createProduct(_ product: SimpleProduct) throws {
+    try database.write { db in
+      var newProduct = ProductEntity(
+        id: nil,
+        name: product.name,
+        price: product.price
+      )
+      
+      try newProduct.insert(db)
+    }
+  }
+  
+  func updateProduct(_ updatedProduct: SimpleProduct) throws {
+    try database.write { db in
+      if var product = try ProductEntity.fetchOne(db, key: updatedProduct.id) {
+        product.name = updatedProduct.name
+        product.price = updatedProduct.price
+        // TODO: tags
+
+        try product.update(db)
+      }
     }
   }
 }
