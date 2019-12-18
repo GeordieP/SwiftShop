@@ -20,6 +20,10 @@ extension TagEntity: TableRecord {
   static let productTags = hasMany(ProductTagEntity.self)
   static let products = hasMany(ProductEntity.self, through: productTags, using: ProductTagEntity.product)
   
+  var products: QueryInterfaceRequest<ProductEntity> {
+    return request(for: TagEntity.products)
+  }
+  
   enum Columns {
     static let id = Column(CodingKeys.id)
     static let name = Column(CodingKeys.name)

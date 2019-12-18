@@ -25,6 +25,9 @@
 		E72F0335238078AB00FAADE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E72F0334238078AB00FAADE7 /* Preview Assets.xcassets */; };
 		E72F0338238078AB00FAADE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E72F0336238078AB00FAADE7 /* LaunchScreen.storyboard */; };
 		E72F034E238078AB00FAADE7 /* SwiftShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */; };
+		E741751823A6B88E00649623 /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741751723A6B88E00649623 /* TagRepository.swift */; };
+		E741751A23A6C09400649623 /* TagFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741751923A6C09400649623 /* TagFetcher.swift */; };
+		E741751C23A6C46100649623 /* ToggleableTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741751B23A6C46100649623 /* ToggleableTag.swift */; };
 		E7498BFC239F113700172CFF /* ListedProductFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7498BFB239F113700172CFF /* ListedProductFetcher.swift */; };
 		E7498BFE239F179700172CFF /* ProductListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7498BFD239F179700172CFF /* ProductListRepository.swift */; };
 		E74A8ECA23A4541100C01293 /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = E74A8EC923A4541100C01293 /* PartialSheet */; };
@@ -86,6 +89,9 @@
 		E72F0349238078AB00FAADE7 /* SwiftShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72F034D238078AB00FAADE7 /* SwiftShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftShopUITests.swift; sourceTree = "<group>"; };
 		E72F034F238078AC00FAADE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E741751723A6B88E00649623 /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
+		E741751923A6C09400649623 /* TagFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFetcher.swift; sourceTree = "<group>"; };
+		E741751B23A6C46100649623 /* ToggleableTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleableTag.swift; sourceTree = "<group>"; };
 		E7498BFB239F113700172CFF /* ListedProductFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedProductFetcher.swift; sourceTree = "<group>"; };
 		E7498BFD239F179700172CFF /* ProductListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListRepository.swift; sourceTree = "<group>"; };
 		E766196B23A461CE007B969C /* ProductEditForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEditForm.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 				E71FDC7223A4059D005C154E /* ProductRow.swift */,
 				E71FDC7F23A419FD005C154E /* SmallTag.swift */,
 				E766196B23A461CE007B969C /* ProductEditForm.swift */,
+				E741751B23A6C46100649623 /* ToggleableTag.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +238,7 @@
 			children = (
 				E7498BFB239F113700172CFF /* ListedProductFetcher.swift */,
 				E71FDC6E23A40365005C154E /* TaggedProductFetcher.swift */,
+				E741751923A6C09400649623 /* TagFetcher.swift */,
 			);
 			path = Fetchers;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 			children = (
 				E76B0376239DC10E00721AAB /* ProductRepository.swift */,
 				E7498BFD239F179700172CFF /* ProductListRepository.swift */,
+				E741751723A6B88E00649623 /* TagRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -425,12 +434,15 @@
 				E72F032C238078AB00FAADE7 /* AppDelegate.swift in Sources */,
 				E72F032E238078AB00FAADE7 /* SceneDelegate.swift in Sources */,
 				E71FDC6B23A3FBD2005C154E /* TagPage.swift in Sources */,
+				E741751823A6B88E00649623 /* TagRepository.swift in Sources */,
 				E71FDC6D23A3FBE2005C154E /* SettingsPage.swift in Sources */,
 				E766196C23A461CE007B969C /* ProductEditForm.swift in Sources */,
 				E76B036F239DBAB700721AAB /* Product.swift in Sources */,
 				E79754BA239D75F0004E98CF /* ProductEntity.swift in Sources */,
 				E7498BFC239F113700172CFF /* ListedProductFetcher.swift in Sources */,
+				E741751A23A6C09400649623 /* TagFetcher.swift in Sources */,
 				E7021BF1239DB71600002730 /* ProductStatusEntity.swift in Sources */,
+				E741751C23A6C46100649623 /* ToggleableTag.swift in Sources */,
 				E79834A0239B55C100F4A09B /* TESTVIEW.swift in Sources */,
 				E76B0377239DC10E00721AAB /* ProductRepository.swift in Sources */,
 				E71FDC6923A3FBBC005C154E /* ProductPage.swift in Sources */,

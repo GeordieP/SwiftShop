@@ -12,6 +12,7 @@ import PartialSheet
 
 class ProductPageViewModel : ObservableObject {
   @Published var products: [SimpleProduct] = []
+  @Published var tags: [Tag] = []
   private var cancellables: [AnyCancellable] = []
   
   init() {
@@ -22,8 +23,17 @@ class ProductPageViewModel : ObservableObject {
       .catch { _ in Empty() }
       .sink { self.products = $0 }
       .store(in: &cancellables)
+    
+    App
+      .tags()
+      .tagPublisher()
+//    .fetchOnSubscription()
+      .catch { _ in Empty() }
+      .sink { self.tags = $0 }
+      .store(in: &cancellables)
   }
   
+  // TODO: can we remove isNew here?
   func onSaveProduct(_ product: SimpleProduct, _ isNew: Bool) {
     if isNew {
       do {
@@ -44,26 +54,26 @@ class ProductPageViewModel : ObservableObject {
 struct ProductPage: View {
   @ObservedObject private var model: ProductPageViewModel = ProductPageViewModel()
   @State var editSheetOpen = false
-  @State var editedProduct: SimpleProduct?
-  @State var isNewProduct = false // TODO: this sucks, do something better
+
+  var editFormModel: ProductEditFormModel
   
+  init() {
+    editFormModel = ProductEditFormModel()
+  }
+
   private func addProductClicked() {
     editSheetOpen = true
-    isNewProduct = true
-    editedProduct = SimpleProduct(id: 0, name: "", price: 0)
+    editFormModel.newProduct()
   }
   
   private func productRowClicked(product: SimpleProduct) {
     editSheetOpen = true
-    isNewProduct = false
-    editedProduct = product
+    editFormModel.editProduct(product)
   }
   
   private func onSaveProduct(_ product: SimpleProduct, isNew: Bool) {
     model.onSaveProduct(product, isNew)
     editSheetOpen = false
-    isNewProduct = false
-    editedProduct = nil
   }
   
   var body: some View {
@@ -80,11 +90,15 @@ struct ProductPage: View {
         ProductRow(product: p, onRowClick: self.productRowClicked)
       }
     }.partialSheet(presented: $editSheetOpen) {
-      ProductEditForm(
-        product: self.editedProduct,
-        isNew: self.isNewProduct,
-        onSave: self.onSaveProduct
-      )
+      VStack {
+        Text("Edit Product") // TODO: change text to 'new product' when it's new
+        
+        ProductEditForm(
+          formModel: self.editFormModel,
+          onSave: self.onSaveProduct,
+          tags: self.model.tags
+        )
+      }
     }
   }
 }

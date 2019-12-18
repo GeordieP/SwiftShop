@@ -9,61 +9,61 @@
 import SwiftUI
 
 class ProductEditFormModel: ObservableObject {
-  @Published var nameField: String
-  @Published var priceField: String
+  @Published var nameField: String = ""
+  @Published var priceField: String = ""
+  var isNew = false
   
-  init(name: String, price: String) {
-    nameField = name
-    priceField = price
+  fileprivate var editedProduct: SimpleProduct?
+  
+  func newProduct() {
+    let product = SimpleProduct(id: -1, name: "", price: 0.0)
+    isNew = true
+    
+    editedProduct = product
+    nameField = product.name
+    priceField = String(product.price)
+  }
+  
+  func editProduct(_ product: SimpleProduct) {
+    isNew = false
+    
+    editedProduct = product
+    nameField = product.name
+    priceField = String(product.price)
+  }
+  
+  fileprivate func getProduct() -> SimpleProduct {
+    SimpleProduct(id: editedProduct!.id, name: nameField, price: Double(priceField)!)
   }
 }
 
 struct ProductEditForm: View {
+  @ObservedObject var model: ProductEditFormModel
   typealias onSaveFn = (SimpleProduct, Bool) -> Void
-  @ObservedObject var formModel: ProductEditFormModel
-  var product: SimpleProduct?
-  var isNew: Bool
+
+  var tags: [Tag]
   var onSave: onSaveFn
 
-  init(product p: SimpleProduct?, isNew: Bool = false, onSave: @escaping onSaveFn) {
-    self.isNew = isNew
+  init(formModel: ProductEditFormModel, onSave: @escaping onSaveFn, tags: [Tag]) {
+    self.tags = tags
+    self.model = formModel
     self.onSave = onSave
-    
-    if let product = p {
-      self.product = p
-      self.formModel = ProductEditFormModel(name: product.name, price: String(product.price))
-    } else {
-      self.product = nil
-      self.formModel = ProductEditFormModel(name: "", price: "")
-    }
   }
   
   private func save() {
-    let newName = formModel.nameField
-    let newPrice = Double(formModel.priceField)! // TODO: Handle error
-    
-    onSave(
-      SimpleProduct(
-        id: product!.id,
-        name: newName,
-        price: newPrice
-      ),
-      isNew
-    )
+    self.onSave(model.getProduct(), model.isNew)
   }
-  
+
   var body: some View {
-    // TODO: this aint good
-    if product == nil { return AnyView(Text("No Product")) }
+    // TODO: can this be improved or removed?
+    if model.editedProduct == nil { return AnyView(Text("No Product")) }
     
     return AnyView(VStack {
-      Text(isNew ? "New Product" : "Edit Product")
-      
       Form {
-        TextField("Name", text: $formModel.nameField)
-        TextField("Price", text: $formModel.priceField)
+        TextField("Name", text: $model.nameField)
+        TextField("Price", text: $model.priceField)
         
-        Button(action: self.save) {
+        Button(action: { self.save() }) {
           HStack {
             Text("Save")
           }
@@ -75,9 +75,16 @@ struct ProductEditForm: View {
 
 struct ProductEditForm_Previews: PreviewProvider {
   static var previews: some View {
-    let product = SimpleProduct(id: 0, name: "ProductName", price: 3.0)
-    let onSave = { (p: SimpleProduct, isNew: Bool) in return }
+    let onSave = { (p: SimpleProduct, b: Bool) in return }
+
+    let tags = [
+      Tag(id: 1, name: "FirstTag", color: "blue"),
+      Tag(id: 2, name: "SecondTag", color: "blue"),
+      Tag(id: 3, name: "ThirdTag", color: "green")
+    ]
     
-    return ProductEditForm(product: product, isNew: false, onSave: onSave)
+    let model = ProductEditFormModel()
+
+    return ProductEditForm(formModel: model, onSave: onSave, tags: tags)
   }
 }
