@@ -26,8 +26,8 @@ struct ProductRow<P: Product>: View {
         if product.tags.count > 0 {
           ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-              ForEach(0..<product.tags.count) { i in
-                SmallTag(tag: self.product.tags[i])
+              ForEach(product.tags, id: \.id) { tag in
+                SmallTag(tag: tag)
               }
             }
           }

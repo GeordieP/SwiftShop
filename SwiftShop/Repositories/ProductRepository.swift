@@ -67,7 +67,7 @@ extension ProductRepository {
       var productStatus = try ProductStatusEntity
         .filter(Column("listId") == listId && Column("productId") == productId)
         .fetchOne(db)
-
+      
       productStatus!.complete = complete
       try productStatus!.update(db)
     }
@@ -82,16 +82,62 @@ extension ProductRepository {
       )
       
       try newProduct.insert(db)
+      
+      try product.tags.forEach({ tag in
+        var newTag = ProductTagEntity(productId: newProduct.id!, tagId: tag.id)
+        try newTag.insert(db)
+      })
     }
   }
   
+  // TODO: REFACTOR ME
   func updateProduct(_ updatedProduct: SimpleProduct) throws {
     try database.write { db in
-      if var product = try ProductEntity.fetchOne(db, key: updatedProduct.id) {
+      let request = ProductEntity
+        .filter(key: updatedProduct.id)
+        .including(all: ProductEntity.tags)
+      
+      if let taggedProduct = try TaggedProductFetcher.fetchOne(db, request) {
+        var product = taggedProduct.productEntity
+        let existingTags = taggedProduct.tagEntities
+        
+        let existingTagIds = existingTags.map({ $0.id! })
+        let updatedTagIds = updatedProduct.tags.map({ $0.id })
+        
+        let difference = updatedTagIds.difference(from: existingTagIds)
+        let newTagIds: [Int64] = difference.insertions.map({
+          switch $0 {
+          case .insert(_, let element, _):
+            return element
+          case .remove(_, let element, _):
+            return element
+          }
+        })
+        
+        let removedTagIds: [Int64] = difference.removals.map({
+          switch $0 {
+          case .insert(_, let element, _):
+            return element
+          case .remove(_, let element, _):
+            return element
+          }
+        })
+        
+        try removedTagIds.forEach({ id in
+          try ProductTagEntity
+            .filter(Column("productId") == product.id! && Column("tagId") == id)
+            .deleteAll(db)
+        })
+        
+        
+        try newTagIds.forEach({ id in
+          var newTagEntity = ProductTagEntity(productId: product.id!, tagId: id)
+          try newTagEntity.insert(db)
+        })
+        
         product.name = updatedProduct.name
         product.price = updatedProduct.price
-        // TODO: tags
-
+        
         try product.update(db)
       }
     }

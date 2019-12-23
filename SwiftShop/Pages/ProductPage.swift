@@ -54,13 +54,8 @@ class ProductPageViewModel : ObservableObject {
 struct ProductPage: View {
   @ObservedObject private var model: ProductPageViewModel = ProductPageViewModel()
   @State var editSheetOpen = false
-
-  var editFormModel: ProductEditFormModel
+  private var editFormModel = ProductEditFormModel()
   
-  init() {
-    editFormModel = ProductEditFormModel()
-  }
-
   private func addProductClicked() {
     editSheetOpen = true
     editFormModel.newProduct()
