@@ -36,7 +36,6 @@ struct ProductRow<P: Product>: View {
             .font(.caption)
             .foregroundColor(Color.gray)
         }
-        
       }
     }
   }

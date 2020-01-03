@@ -27,3 +27,11 @@ struct ListedProduct: Product {
   var complete: Bool
   var tags: [Tag] = []
 }
+
+// MARK: - Helpers
+
+extension SimpleProduct {
+  static func newEmpty() -> SimpleProduct {
+    SimpleProduct(id: -1, name: "", price: 0.0, tags: [])
+  }
+}

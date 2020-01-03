@@ -8,30 +8,32 @@
 
 import SwiftUI
 
+enum SheetStatus {
+  case closed
+  case open(_ product: SimpleProduct, isNew: Bool = false)
+  
+  func isOpen() -> Bool {
+    if case .closed = self { return false }
+    return true
+  }
+  
+  func isNew() -> Bool {
+    if case let .open(_, isNew) = self { return isNew }
+    return false
+  }
+}
+
 class ProductEditFormModel: ObservableObject {
+  var productId: Int64
   @Published var nameField: String = ""
   @Published var priceField: String = ""
   @Published var selectedTagIds: [Int64] = []
-  var isNew = false
-  
-  fileprivate var editedProduct: SimpleProduct?
-  
-  func newProduct() {
-    let product = SimpleProduct(id: -1, name: "", price: 0.0)
-    isNew = true
-    
-    editedProduct = product
-    nameField = product.name
-    priceField = String(product.price)
-  }
-  
-  func editProduct(_ product: SimpleProduct) {
-    isNew = false
-    
-    editedProduct = product
-    nameField = product.name
-    priceField = String(product.price)
-    selectedTagIds = product.tags.map({ $0.id })
+
+  init(productId: Int64, nameField: String, priceField: String, selectedTagIds: [Int64]) {
+    self.productId = productId
+    self.nameField = nameField
+    self.priceField = priceField
+    self.selectedTagIds = selectedTagIds
   }
   
   fileprivate func toggleTag(tagId: Int64) {
@@ -41,45 +43,46 @@ class ProductEditFormModel: ObservableObject {
       selectedTagIds.append(tagId)
     }
   }
-  
-  fileprivate func getProduct(allTags: [Tag]) -> SimpleProduct {
-    SimpleProduct(
-      id: editedProduct!.id,
-      name: nameField,
-      price: Double(priceField)!,
-      tags: allTags.filter({selectedTagIds.contains($0.id)}) // TODO: could be a perf concern when there are lots of tags
-    )
-  }
 }
 
 struct ProductEditForm: View {
-  @ObservedObject var model: ProductEditFormModel
-  typealias onSaveFn = (SimpleProduct, Bool) -> Void
-  
-  var tags: [Tag]
+  typealias onSaveFn = (SimpleProduct) -> Void
+
+  var allTags: [Tag]
   var onSave: onSaveFn
+  @ObservedObject private var model: ProductEditFormModel
   
-  init(formModel: ProductEditFormModel, onSave: @escaping onSaveFn, tags: [Tag]) {
-    self.tags = tags
-    self.model = formModel
-    self.onSave = onSave
+  init(editedProduct: SimpleProduct, tags: [Tag], saveProduct: @escaping onSaveFn) {
+    self.allTags = tags
+    self.onSave = saveProduct
+
+    model = ProductEditFormModel(
+      productId: editedProduct.id,
+      nameField: editedProduct.name,
+      priceField: String(editedProduct.price),
+      selectedTagIds: editedProduct.tags.map({ $0.id })
+    )
   }
   
-  private func save() {
-    self.onSave(model.getProduct(allTags: tags), model.isNew)
+  func save() {
+    let newProduct = SimpleProduct(
+      id: self.model.productId,
+      name: self.model.nameField,
+      price: Double(self.model.priceField)!,
+      tags: self.allTags.filter({ self.model.selectedTagIds.contains($0.id) }) // TODO: PERF: this could be rough if there are a lot of tags
+    )
+    
+    onSave(newProduct)
   }
   
   var body: some View {
-    // TODO: can this be improved or removed?
-    if model.editedProduct == nil { return AnyView(Text("No Product")) }
-    
-    return AnyView(VStack {
+    return VStack {
       Form {
         TextField("Name", text: $model.nameField)
         TextField("Price", text: $model.priceField)
       }
 
-      ForEach(tags, id: \.id) { (tag: Tag) in
+      ForEach(allTags, id: \.id) { (tag: Tag) in
         ToggleableTag(tag: tag, selected: self.model.selectedTagIds.contains(tag.id))
           .onTapGesture(perform: { self.model.toggleTag(tagId: tag.id)})
       }
@@ -91,41 +94,27 @@ struct ProductEditForm: View {
           }
         }
       }
-    })
-    
-    //    return AnyView(VStack {
-    //      Form {
-    //        TextField("Name", text: $model.nameField)
-    //        TextField("Price", text: $model.priceField)
-    //
-    //        Button(action: { self.save() }) {
-    //          HStack {
-    //            Text("Save")
-    //          }
-    //        }
-    //      }
-    //
-    //      ForEach(tags, id: \.id) { tag in
-    //        ToggleableTag(tag: tag, selected: self.model.selectedTagIds.contains(tag.id))
-    ////          .onTapGesture(perform: { self.model.toggleTag(tagId: tag.id) })
-    //      }
-    //      .padding(3)
-    //    })
+    }
   }
 }
 
 struct ProductEditForm_Previews: PreviewProvider {
   static var previews: some View {
-    let onSave = { (p: SimpleProduct, b: Bool) in return }
+    let onSave = { (p: SimpleProduct) in return }
     
     let tags = [
       Tag(id: 1, name: "FirstTag", color: "blue"),
       Tag(id: 2, name: "SecondTag", color: "blue"),
       Tag(id: 3, name: "ThirdTag", color: "green")
     ]
+
+    let product = SimpleProduct(
+      id: 1,
+      name: "Example Product",
+      price: 4.00,
+      tags: Array(tags[0..<2])
+    )
     
-    let model = ProductEditFormModel()
-    
-    return ProductEditForm(formModel: model, onSave: onSave, tags: tags)
+    return ProductEditForm(editedProduct: product, tags: tags, saveProduct: onSave)
   }
 }

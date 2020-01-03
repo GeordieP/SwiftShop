@@ -27,108 +27,68 @@ class ProductPageViewModel: ObservableObject {
     App
       .tags()
       .tagPublisher()
-//    .fetchOnSubscription()
       .catch { _ in Empty() }
       .sink { self.tags = $0 }
       .store(in: &cancellables)
   }
-  
-  // TODO: can we remove isNew here?
-  func onSaveProduct(_ product: SimpleProduct, _ isNew: Bool) {
-    if isNew {
-      do {
-        try App.products().createProduct(product)
-      } catch {
-        print(error)
-      }
-    } else {
-      do {
-        try App.products().updateProduct(product)
-      } catch {
-        print(error)
-      }
+
+  func updateProduct(_ product: SimpleProduct) {
+    do {
+      try App.products().updateProduct(product)
+    } catch {
+      print(error)
+    }
+  }
+
+  func createProduct(_ product: SimpleProduct) {
+    do {
+      try App.products().createProduct(product)
+    } catch {
+      print(error)
     }
   }
 }
-
-enum SheetStatus {
-  case closed
-  case open(_ product: SimpleProduct, isNew: Bool = false)
   
-  func isOpen() -> Bool {
-    switch(self) {
-    case .closed:
-      return false
-    default:
-      return true
-    }
-  }
-}
-
-class EditSheetStatus: ObservableObject {
-  @Published var status: SheetStatus
-
-  init() {
-    status = .closed
-  }
-
-  func open(_ product: SimpleProduct, isNew: Bool = false) {
-    status = .open(product, isNew: isNew)
-  }
-
-  func close() {
-    status = .closed
-  }
-  
-  func isOpen() -> Bool {
-    let val = status.isOpen()
-    
-    return val
-  }
-}
-
 struct ProductPage: View {
   @ObservedObject private var model: ProductPageViewModel = ProductPageViewModel()
-  @ObservedObject private var editSheetStatus = EditSheetStatus()
-  @State var editSheetOpen = false
-  // @State var editSheetStatus: EditSheetStatus = .closed
-  private var editFormModel = ProductEditFormModel()
-  private var imfalse = false
-  
-  var otherstatus = SheetStatus.closed
+  @State var editSheetStatus: SheetStatus = .closed
   
   private func addProductClicked() {
-    editSheetOpen = true
-    editFormModel.newProduct()
-    //
-    editSheetStatus.open(SimpleProduct(id: -1, name: "", price: 0.0, tags: []), isNew: true)
+    editSheetStatus = .open(SimpleProduct.newEmpty(), isNew: true)
   }
   
   private func productRowClicked(product: SimpleProduct) {
-    editSheetOpen = true
-    editFormModel.editProduct(product)
-    //
-    editSheetStatus.open(product, isNew: false)
+    editSheetStatus = .open(product, isNew: false)
   }
   
-  private func onSaveProduct(_ product: SimpleProduct, isNew: Bool) {
-    model.onSaveProduct(product, isNew)
-    editSheetOpen = false
-    //
-    editSheetStatus.close()
+  private func closeForm(_ _: Bool = false) {
+    editSheetStatus = .closed
   }
   
-  
-  private func testSet(_ fieldValue: Bool) {
-    self.editSheetStatus.close()
-  }
-  
-  var body: some View {
-//    let isDisplayed = Binding<Bool>(get: { self.editSheetOpen }, set: { self.editSheetOpen = true } )
+  private func onSaveProduct(_ editedProduct: SimpleProduct) {
+    if editSheetStatus.isNew() {
+      model.createProduct(editedProduct)
+    } else {
+      model.updateProduct(editedProduct)
+    }
 
-    let boundSearchValue = Binding<Bool>(get: self.editSheetStatus.isOpen, set: self.testSet)
-    
-    return VStack {
+    closeForm()
+  }
+
+  private func renderEditSheet() -> AnyView {
+    if case let .open(product, _) = editSheetStatus {
+      return AnyView(ProductEditForm(
+        editedProduct: product,
+        tags: self.model.tags,
+        saveProduct: self.onSaveProduct
+      ))
+    }
+
+    return AnyView(Text("Error: Product edit form should not be open"))
+  }
+
+  var body: some View {
+    VStack {
       HStack {
         Text("Products").font(.title)
         Spacer()
@@ -140,15 +100,10 @@ struct ProductPage: View {
       List(model.products) { p in
         ProductRow(product: p, onRowClick: self.productRowClicked)
       }
-    }.partialSheet(presented: boundSearchValue) {
+    }.partialSheet(presented: Binding<Bool>(get: self.editSheetStatus.isOpen, set: self.closeForm)) {
       VStack {
-        Text("Edit Product") // TODO: change text to 'new product' when it's new
-        
-        ProductEditForm(
-          formModel: self.editFormModel,
-          onSave: self.onSaveProduct,
-          tags: self.model.tags
-        )
+        Text(self.editSheetStatus.isNew() ? "New Product" : "Edit Product")
+        self.renderEditSheet()
       }
     }
   }
