@@ -48,15 +48,6 @@ struct ContentView: View {
           }
       }
       .tag(3)
-      
-      TESTVIEW()
-        .tabItem {
-          VStack {
-            Image(systemName: "exclamationmark.triangle")
-            Text("Debug")
-          }
-      }
-      .tag(4)
     }
   }
 }

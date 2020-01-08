@@ -18,6 +18,7 @@ struct TagRepository {
 }
 
 // MARK: - Publishers
+
 extension TagRepository {
   func tagPublisher() -> DatabasePublishers.Value<[Tag]> {
     ValueObservation.tracking(value: { db in

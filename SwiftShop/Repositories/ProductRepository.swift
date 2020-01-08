@@ -49,19 +49,6 @@ extension ProductRepository {
 // MARK: - Actions
 
 extension ProductRepository {
-  // TODO: remove me
-  func testTagProduct(productId: Int64) throws {
-    try database.write { db in
-      // make a tag to use for now
-      var newTag = TagEntity(id: nil, name: "2nd", color: "red")
-      try newTag.insert(db)
-      
-      // make an association with given product
-      var newProductTag = ProductTagEntity(productId: productId, tagId: newTag.id!)
-      try newProductTag.insert(db)
-    }
-  }
-  
   func setProductCompleteInList(productId: Int64, listId: Int64, complete: Bool) throws {
     try database.write { db in
       var productStatus = try ProductStatusEntity

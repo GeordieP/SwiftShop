@@ -42,7 +42,6 @@
 		E79834802399D80100F4A09B /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E798347F2399D80100F4A09B /* GRDB */; };
 		E79834832399D82800F4A09B /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = E79834822399D82800F4A09B /* GRDBCombine */; };
 		E79834862399D91200F4A09B /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834852399D91200F4A09B /* AppDatabase.swift */; };
-		E79834A0239B55C100F4A09B /* TESTVIEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = E798349F239B55C100F4A09B /* TESTVIEW.swift */; };
 		E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C02DD923941A13001CC5C0 /* AppConstants.swift */; };
 		E7E95821239C2D7800422E74 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E95820239C2D7800422E74 /* AppModel.swift */; };
 /* End PBXBuildFile section */
@@ -103,7 +102,6 @@
 		E79754B9239D75F0004E98CF /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		E79754BD239D7E2B004E98CF /* TagEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		E79834852399D91200F4A09B /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
-		E798349F239B55C100F4A09B /* TESTVIEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTVIEW.swift; sourceTree = "<group>"; };
 		E7C02DD923941A13001CC5C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E7E95820239C2D7800422E74 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,7 +244,6 @@
 		E74C6E8B23807AE30014DEDB /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				E798349F239B55C100F4A09B /* TESTVIEW.swift */,
 				E71FDC6823A3FBBC005C154E /* ProductPage.swift */,
 				E71FDC6623A3FB96005C154E /* ProductListPage.swift */,
 				E71FDC6A23A3FBD2005C154E /* TagPage.swift */,
@@ -443,7 +440,6 @@
 				E741751A23A6C09400649623 /* TagFetcher.swift in Sources */,
 				E7021BF1239DB71600002730 /* ProductStatusEntity.swift in Sources */,
 				E741751C23A6C46100649623 /* ToggleableTag.swift in Sources */,
-				E79834A0239B55C100F4A09B /* TESTVIEW.swift in Sources */,
 				E76B0377239DC10E00721AAB /* ProductRepository.swift in Sources */,
 				E71FDC6923A3FBBC005C154E /* ProductPage.swift in Sources */,
 				E71FDC7C23A41791005C154E /* String.swift in Sources */,
