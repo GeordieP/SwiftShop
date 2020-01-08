@@ -51,6 +51,7 @@ class ProductPageViewModel: ObservableObject {
   
 struct ProductPage: View {
   @ObservedObject private var model: ProductPageViewModel = ProductPageViewModel()
+  @ObservedObject private var filters = FilterManager<SimpleProduct>()
   @State var editSheetStatus: SheetStatus = .closed
   
   private func addProductClicked() {
@@ -97,7 +98,9 @@ struct ProductPage: View {
         }
       }.padding()
       
-      List(model.products) { p in
+      ProductFilterBar(filterManager: filters) // TODO: FIXME: the input in here seems to be resetting its cursor pos every time the ProductPage re-renders.
+      
+      List(filters.apply(to: model.products)) { p in
         ProductRow(product: p, onRowClick: self.productRowClicked)
       }
     }.partialSheet(presented: Binding<Bool>(get: self.editSheetStatus.isOpen, set: self.closeForm)) {

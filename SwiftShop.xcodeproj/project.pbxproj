@@ -42,6 +42,8 @@
 		E79834802399D80100F4A09B /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E798347F2399D80100F4A09B /* GRDB */; };
 		E79834832399D82800F4A09B /* GRDBCombine in Frameworks */ = {isa = PBXBuildFile; productRef = E79834822399D82800F4A09B /* GRDBCombine */; };
 		E79834862399D91200F4A09B /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79834852399D91200F4A09B /* AppDatabase.swift */; };
+		E79E28C123C585E300903F1E /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E28C023C585E300903F1E /* FilterManager.swift */; };
+		E79E28C323C5861D00903F1E /* ProductFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79E28C223C5861D00903F1E /* ProductFilterBar.swift */; };
 		E7C02DDA23941A13001CC5C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C02DD923941A13001CC5C0 /* AppConstants.swift */; };
 		E7E95821239C2D7800422E74 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E95820239C2D7800422E74 /* AppModel.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +104,8 @@
 		E79754B9239D75F0004E98CF /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		E79754BD239D7E2B004E98CF /* TagEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		E79834852399D91200F4A09B /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
+		E79E28C023C585E300903F1E /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
+		E79E28C223C5861D00903F1E /* ProductFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFilterBar.swift; sourceTree = "<group>"; };
 		E7C02DD923941A13001CC5C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E7E95820239C2D7800422E74 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E71FDC7823A413B8005C154E /* AppUtil.swift */,
+				E79E28C023C585E300903F1E /* FilterManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 				E71FDC7F23A419FD005C154E /* SmallTag.swift */,
 				E766196B23A461CE007B969C /* ProductEditForm.swift */,
 				E741751B23A6C46100649623 /* ToggleableTag.swift */,
+				E79E28C223C5861D00903F1E /* ProductFilterBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				E79754BA239D75F0004E98CF /* ProductEntity.swift in Sources */,
 				E7498BFC239F113700172CFF /* ListedProductFetcher.swift in Sources */,
 				E741751A23A6C09400649623 /* TagFetcher.swift in Sources */,
+				E79E28C323C5861D00903F1E /* ProductFilterBar.swift in Sources */,
 				E7021BF1239DB71600002730 /* ProductStatusEntity.swift in Sources */,
 				E741751C23A6C46100649623 /* ToggleableTag.swift in Sources */,
 				E76B0377239DC10E00721AAB /* ProductRepository.swift in Sources */,
@@ -449,6 +456,7 @@
 				E76B0373239DC08400721AAB /* ProductList.swift in Sources */,
 				E71FDC7923A413B8005C154E /* AppUtil.swift in Sources */,
 				E7021BF3239DB7AF00002730 /* ProductTagEntity.swift in Sources */,
+				E79E28C123C585E300903F1E /* FilterManager.swift in Sources */,
 				E71FDC6723A3FB96005C154E /* ProductListPage.swift in Sources */,
 				E71FDC7323A4059D005C154E /* ProductRow.swift in Sources */,
 				E7498BFE239F179700172CFF /* ProductListRepository.swift in Sources */,
