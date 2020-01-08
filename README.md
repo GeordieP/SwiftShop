@@ -34,3 +34,6 @@ I've been writing weekly posts about my experiences using SwiftUI for the first 
 - [Week 1 - Starting out, Filtering Lists](http://gpow.ca/blog/posts/SwiftShop1/)
 - [Week 2 - Lists state & Products search bar](http://gpow.ca/blog/posts/SwiftShop2/)
 - [Week 3 - GRDB](http://gpow.ca/blog/posts/SwiftShop3/)
+- [Week 4 - Product List View](http://gpow.ca/blog/posts/SwiftShop4/)
+- [Week 5 - Edit form model refactor](http://gpow.ca/blog/posts/SwiftShop5/)
+- [Week 6 - Cleaning things up with ADTs](http://gpow.ca/blog/posts/SwiftShop6/)
