@@ -10,4 +10,5 @@ struct Tag {
   var id: Int64
   var name: String
   var color: String
+  var productCount: Int?
 }

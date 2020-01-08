@@ -20,4 +20,5 @@ struct AppModel {
 
   func products() -> ProductRepository { ProductRepository(database()) }
   func lists() -> ProductListRepository { ProductListRepository(database()) }
+  func tags() -> TagRepository { TagRepository(database()) }
 }

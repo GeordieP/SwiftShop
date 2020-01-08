@@ -14,6 +14,8 @@ struct ListedProductFetcher: FetchableRecord, Decodable {
   var tagEntities: [TagEntity]
 }
 
+// MARK: - Mapping
+
 extension ListedProductFetcher {
   func toSimpleProduct() -> SimpleProduct {
     SimpleProduct(
